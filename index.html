@@ -1964,10 +1964,10 @@ function renderMenu(w) {
   const colors = ['#e8f5e9','#e3f2fd','#fff3e0','#f3e5f5','#e0f2f1','#fce4ec','#fffde7'];
   c.innerHTML = ds.map((d,i) => `
     <div class="day-card">
-      <div class="day-header" onclick="toggleDay(this)" style="background:${colors[i]}">
+      <div class="day-header ${i===0?'expanded':''}" onclick="toggleDay(this)" style="background:${colors[i]}">
         <span>${d.day}</span><span class="arrow">▼</span>
       </div>
-      <div class="day-content">
+      <div class="day-content ${i===0?'show':''}">
         ${d.meals.map(m => `<div class="meal-block"><div class="meal-title">${m.title}</div><div class="meal-items">${m.items}</div><div class="meal-reason">💡 ${m.reason}</div></div>`).join('')}
       </div>
     </div>
