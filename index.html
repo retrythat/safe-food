@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
-<title>安心饮食 — 心脑血管患者饮食管理</title>
+<title>血管保养指南</title>
 <style>
 :root {
   --green: #2e7d32;
+  --green-dark: #1b5e20;
   --green-light: #e8f5e9;
   --yellow: #f9a825;
   --yellow-light: #fffde7;
@@ -16,12 +17,15 @@
   --red-light: #ffebee;
   --blue: #1565c0;
   --blue-light: #e3f2fd;
-  --bg: #fafafa;
+  --purple: #6a1b9a;
+  --purple-light: #f3e5f5;
+  --bg: #f5f5f0;
   --card: #ffffff;
-  --text: #212121;
-  --text-secondary: #616161;
-  --border: #e0e0e0;
-  --radius: 12px;
+  --text: #1a1a1a;
+  --text-secondary: #555;
+  --border: #ddd;
+  --radius: 14px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,55 +34,59 @@ body {
   font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   background: var(--bg);
   color: var(--text);
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 20px;
+  line-height: 1.75;
   -webkit-text-size-adjust: 100%;
 }
 
 .container {
-  max-width: 750px;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 14px;
 }
 
 /* Header */
 .header {
   text-align: center;
-  padding: 24px 16px;
-  background: linear-gradient(135deg, var(--green), #1b5e20);
+  padding: 28px 20px 24px;
+  background: linear-gradient(135deg, #1a6b2e 0%, #145a24 50%, #0d4a1c 100%);
   color: white;
   border-radius: var(--radius);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
-.header h1 { font-size: 28px; margin-bottom: 6px; }
-.header p { font-size: 16px; opacity: 0.9; }
+.header h1 { font-size: 32px; margin-bottom: 8px; letter-spacing: 2px; }
+.header p { font-size: 18px; opacity: 0.92; }
+.header .subtitle { font-size: 15px; opacity: 0.7; margin-top: 6px; }
 
 /* Tabs */
 .tab-bar {
   display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 6px;
+  margin-bottom: 18px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 4px;
 }
 .tab-btn {
   flex-shrink: 0;
-  padding: 12px 20px;
+  padding: 14px 18px;
   border: 2px solid var(--border);
   border-radius: 30px;
   background: var(--card);
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 19px;
+  font-weight: 700;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s;
   white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
 .tab-btn.active {
   background: var(--green);
   color: white;
   border-color: var(--green);
+  box-shadow: 0 3px 10px rgba(46,125,50,0.3);
 }
 
 /* Section */
@@ -89,22 +97,22 @@ body {
 .card {
   background: var(--card);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 22px;
   margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.05);
 }
 .card h2 {
-  font-size: 22px;
-  margin-bottom: 12px;
-  color: var(--green);
+  font-size: 24px;
+  margin-bottom: 14px;
+  color: var(--green-dark);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .card h3 {
-  font-size: 19px;
-  margin: 16px 0 8px;
+  font-size: 21px;
+  margin: 18px 0 10px;
   color: var(--text);
 }
 
@@ -115,14 +123,15 @@ body {
 }
 .calc-input {
   width: 100%;
-  padding: 16px 20px;
-  font-size: 20px;
+  padding: 18px 22px;
+  font-size: 22px;
   border: 2px solid var(--border);
   border-radius: var(--radius);
   outline: none;
   transition: border-color 0.2s;
+  background: #fafafa;
 }
-.calc-input:focus { border-color: var(--green); }
+.calc-input:focus { border-color: var(--green); background: white; }
 .calc-input::placeholder { color: #bbb; }
 
 .suggestions {
@@ -136,11 +145,12 @@ body {
   overflow-y: auto;
   z-index: 100;
   display: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
 .suggestions.show { display: block; }
 .suggestion-item {
-  padding: 14px 20px;
-  font-size: 18px;
+  padding: 16px 22px;
+  font-size: 20px;
   cursor: pointer;
   border-bottom: 1px solid #f5f5f5;
 }
@@ -151,18 +161,19 @@ body {
 .quick-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 16px;
 }
 .quick-tag {
-  padding: 8px 16px;
-  background: #f5f5f5;
-  border-radius: 20px;
-  font-size: 15px;
+  padding: 10px 18px;
+  background: #f0f0f0;
+  border-radius: 22px;
+  font-size: 18px;
   cursor: pointer;
   border: none;
   color: var(--text);
   transition: all 0.2s;
+  font-weight: 500;
 }
 .quick-tag:active { background: var(--green-light); }
 
@@ -174,9 +185,9 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 20px;
+  padding: 10px 22px;
   border-radius: 30px;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -186,24 +197,22 @@ body {
 .rating-badge.avoid { background: var(--red-light); color: var(--red); }
 
 .score-bars { margin: 16px 0; }
-.score-row {
-  margin-bottom: 12px;
-}
+.score-row { margin-bottom: 14px; }
 .score-label {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 4px;
-  font-size: 16px;
+  margin-bottom: 5px;
+  font-size: 18px;
 }
 .score-bar-bg {
-  height: 12px;
+  height: 14px;
   background: #eee;
-  border-radius: 6px;
+  border-radius: 7px;
   overflow: hidden;
 }
 .score-bar-fill {
   height: 100%;
-  border-radius: 6px;
+  border-radius: 7px;
   transition: width 0.6s ease;
 }
 
@@ -214,25 +223,26 @@ body {
   margin: 16px 0;
 }
 .info-box {
-  background: #f9f9f9;
-  padding: 14px;
-  border-radius: 10px;
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 12px;
   text-align: center;
+  border: 1px solid #eee;
 }
-.info-box .label { font-size: 14px; color: var(--text-secondary); }
-.info-box .value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+.info-box .label { font-size: 15px; color: var(--text-secondary); }
+.info-box .value { font-size: 22px; font-weight: 700; margin-top: 6px; }
 
 .detail-list {
   list-style: none;
   padding: 0;
 }
 .detail-list li {
-  padding: 10px 0;
+  padding: 12px 0;
   border-bottom: 1px solid #f0f0f0;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.7;
   display: flex;
-  gap: 8px;
+  gap: 10px;
 }
 .detail-list li:last-child { border-bottom: none; }
 
@@ -242,36 +252,40 @@ body {
   gap: 6px;
   margin-bottom: 16px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 4px;
 }
 .week-btn {
   flex-shrink: 0;
-  padding: 10px 18px;
+  padding: 12px 16px;
   border: 2px solid var(--border);
   border-radius: 25px;
   background: white;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.2s;
 }
 .week-btn.active {
   background: var(--blue);
   color: white;
   border-color: var(--blue);
+  box-shadow: 0 3px 10px rgba(21,101,192,0.25);
 }
 
 /* Meal Table */
 .day-card {
   background: var(--card);
   border-radius: var(--radius);
-  margin-bottom: 14px;
-  border: 1px solid var(--border);
+  margin-bottom: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
   overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
 }
 .day-header {
-  padding: 14px 20px;
-  font-size: 19px;
+  padding: 16px 22px;
+  font-size: 21px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -282,19 +296,18 @@ body {
 .day-header .arrow {
   transition: transform 0.3s;
   font-size: 14px;
+  opacity: 0.5;
 }
 .day-header.expanded .arrow { transform: rotate(180deg); }
 .day-content {
   display: none;
-  padding: 0 20px 16px;
+  padding: 0 22px 18px;
 }
 .day-content.show { display: block; }
 
-.meal-block {
-  margin-bottom: 14px;
-}
+.meal-block { margin-bottom: 16px; }
 .meal-title {
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--green);
   margin-bottom: 6px;
@@ -303,15 +316,15 @@ body {
   gap: 6px;
 }
 .meal-items {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.8;
   color: var(--text);
 }
 .meal-reason {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
   margin-top: 4px;
-  padding-left: 12px;
+  padding-left: 14px;
   border-left: 3px solid var(--green-light);
 }
 
@@ -319,114 +332,184 @@ body {
 .info-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 16px;
+  font-size: 18px;
 }
 .info-table th, .info-table td {
-  padding: 12px 14px;
+  padding: 14px 16px;
   text-align: left;
   border-bottom: 1px solid #f0f0f0;
 }
 .info-table th {
-  background: #f9f9f9;
-  font-weight: 600;
+  background: #f8f9fa;
+  font-weight: 700;
   white-space: nowrap;
-  width: 100px;
+  width: 110px;
 }
 
 /* Rules */
 .rule-item {
   display: flex;
-  gap: 12px;
-  padding: 14px 0;
+  gap: 14px;
+  padding: 16px 0;
   border-bottom: 1px solid #f0f0f0;
 }
+.rule-item:last-child { border-bottom: none; }
 .rule-num {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background: var(--green);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
+  margin-top: 2px;
 }
-.rule-text { font-size: 16px; line-height: 1.6; }
+.rule-num.red { background: var(--red); }
+.rule-text { font-size: 18px; line-height: 1.7; }
 .rule-text strong { color: var(--red); }
-.rule-reason { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+.rule-reason { font-size: 15px; color: var(--text-secondary); margin-top: 4px; }
 
 /* Kitchen Tips */
 .tip-card {
   background: var(--yellow-light);
   border-left: 4px solid var(--yellow);
-  padding: 14px 16px;
+  padding: 16px 18px;
   border-radius: 0 var(--radius) var(--radius) 0;
   margin-bottom: 12px;
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.7;
 }
+
+/* Life caution cards */
+.caution-card {
+  display: flex;
+  gap: 14px;
+  padding: 18px;
+  margin-bottom: 12px;
+  border-radius: var(--radius);
+  font-size: 18px;
+  line-height: 1.7;
+  align-items: flex-start;
+}
+.caution-card.danger {
+  background: var(--red-light);
+  border: 1px solid #ffcdd2;
+}
+.caution-card.warning {
+  background: var(--orange-light);
+  border: 1px solid #ffe0b2;
+}
+.caution-card.info {
+  background: var(--blue-light);
+  border: 1px solid #bbdefb;
+}
+.caution-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+.caution-text strong { display: block; font-size: 19px; margin-bottom: 4px; }
+
+/* Symptom tag */
+.symptom-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 4px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.symptom-tag.vessel { background: #ffcdd2; color: #b71c1c; }
+.symptom-tag.neuro { background: #e1bee7; color: #6a1b9a; }
+.symptom-tag.general { background: #ffe0b2; color: #e65100; }
+
+/* Common food list */
+.food-common-list { margin-top: 12px; }
+.food-common-item {
+  display: inline-block;
+  padding: 10px 16px;
+  margin: 4px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  transition: transform 0.15s;
+}
+.food-common-item:active { transform: scale(0.95); }
+.food-common-item.safe { background: var(--green-light); color: var(--green-dark); }
+.food-common-item.caution { background: var(--yellow-light); color: #f57f17; }
+.food-common-item.danger { background: var(--red-light); color: var(--red); }
 
 /* Footer */
 .footer {
   text-align: center;
   padding: 30px 16px;
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 15px;
 }
 
 /* Responsive */
-@media (max-width: 400px) {
-  body { font-size: 16px; }
-  .header h1 { font-size: 24px; }
-  .calc-input { font-size: 18px; padding: 14px 16px; }
+@media (max-width: 420px) {
+  body { font-size: 18px; }
+  .header h1 { font-size: 28px; }
+  .calc-input { font-size: 20px; padding: 16px 18px; }
   .info-grid { grid-template-columns: 1fr; }
+  .tab-btn { padding: 12px 14px; font-size: 17px; }
 }
-
-/* Common food danger bg */
-.food-common-list {
-  margin-top: 12px;
-}
-.food-common-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  margin-bottom: 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-.food-common-item.safe { background: var(--green-light); }
-.food-common-item.caution { background: var(--yellow-light); }
-.food-common-item.danger { background: var(--red-light); }
 </style>
 </head>
 <body>
 
 <div class="container">
   <div class="header">
-    <h1>🥦 安心饮食</h1>
-    <p>心脑血管患者专属饮食管理工具</p>
+    <h1>🫀 血管保养指南</h1>
+    <p>心脑血管患者全方位健康管理</p>
+    <div class="subtitle">基于浙二 · 华山医院专家方案</div>
   </div>
 
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('calc')">🔍 食物查询</button>
-    <button class="tab-btn" onclick="switchTab('menu')">📋 每周菜单</button>
-    <button class="tab-btn" onclick="switchTab('rules')">📌 饮食铁律</button>
-    <button class="tab-btn" onclick="switchTab('info')">👤 病情档案</button>
+    <button class="tab-btn" onclick="switchTab('menu', this)">📋 每周菜单</button>
+    <button class="tab-btn" onclick="switchTab('calc', this)">🔍 食物查询</button>
+    <button class="tab-btn" onclick="switchTab('rules', this)">📌 饮食铁律</button>
+    <button class="tab-btn" onclick="switchTab('life', this)">⚠️ 生活禁忌</button>
+    <button class="tab-btn" onclick="switchTab('info', this)">👤 病情档案</button>
+  </div>
+
+  <!-- ========== 每周菜单 ========== -->
+  <div id="sec-menu" class="section">
+    <div class="card">
+      <h2>📋 每周饮食菜单</h2>
+      <p style="font-size:18px;color:var(--text-secondary);margin-bottom:14px;">
+        8套菜单轮换，约2个月不重样。点击日期展开详情。
+      </p>
+    </div>
+
+    <div class="week-selector" id="weekSelector"></div>
+    <div id="menuContent"></div>
+
+    <div class="card">
+      <h2>👩‍🍳 厨房操作提醒</h2>
+      <div class="tip-card">🧂 <strong>控盐：</strong>全天用盐不超过一啤酒瓶盖（约5克）。做菜时先不放盐，出锅前再撒一点，咸味更明显但总量更少。用了生抽就少放盐。</div>
+      <div class="tip-card">🫗 <strong>控油：</strong>每顿饭炒菜用油不超过一小汤匙（约7ml），全天不超过2小汤匙（20ml）。用不粘锅可以少放油。绝对不用猪油、羊油。</div>
+      <div class="tip-card">🥬 <strong>蔬菜必须做熟：</strong>洋葱、芹菜、木耳这些都要炒熟或煮熟才能吃。生的凉拌菜会刺激胃黏膜，吃了抗凝药后容易胃出血。</div>
+      <div class="tip-card">🍚 <strong>主食控量：</strong>早餐主食只选一种（红薯/小米/玉米糁），量不超过大半碗。不要又吃红薯又喝小米粥，碳水叠加血糖会飙。</div>
+      <div class="tip-card">🥚 <strong>鸡蛋处理：</strong>每天吃1-2个水煮蛋清，蛋黄每周最多1-2个。蛋黄胆固醇高，对必须把坏胆固醇降到极低的人，蛋黄要严格限制。</div>
+    </div>
   </div>
 
   <!-- ========== 食物计算器 ========== -->
-  <div id="sec-calc" class="section active">
+  <div id="sec-calc" class="section">
     <div class="card">
       <h2>🔍 食物健康查询</h2>
-      <p style="font-size:16px;color:var(--text-secondary);margin-bottom:14px;">
+      <p style="font-size:18px;color:var(--text-secondary);margin-bottom:14px;">
         输入一种食物，立刻查看它对心脑血管病情的影响和吃法建议
       </p>
       <div class="calc-input-wrap">
-        <input type="text" class="calc-input" id="foodInput" placeholder="输入食物名称，如：红薯、馒头、猪肉…" autocomplete="off">
+        <input type="text" class="calc-input" id="foodInput" placeholder="输入食物名称，如：红薯、馒头…" autocomplete="off">
         <div class="suggestions" id="suggestions"></div>
       </div>
       <div class="quick-tags">
@@ -438,6 +521,8 @@ body {
         <button class="quick-tag" onclick="searchFood('油条')">油条</button>
         <button class="quick-tag" onclick="searchFood('咸菜')">咸菜</button>
         <button class="quick-tag" onclick="searchFood('豆腐')">豆腐</button>
+        <button class="quick-tag" onclick="searchFood('浓茶')">浓茶</button>
+        <button class="quick-tag" onclick="searchFood('白酒')">白酒</button>
       </div>
     </div>
 
@@ -447,41 +532,137 @@ body {
 
     <div class="card">
       <h2>📊 常见食物速查</h2>
-      <p style="font-size:15px;color:var(--text-secondary);margin-bottom:10px;">点击可查看详细分析</p>
+      <p style="font-size:16px;color:var(--text-secondary);margin-bottom:10px;">点击可查看详细分析</p>
       <div class="food-common-list" id="commonFoods"></div>
-    </div>
-  </div>
-
-  <!-- ========== 每周菜单 ========== -->
-  <div id="sec-menu" class="section">
-    <div class="card">
-      <h2>📋 每周饮食菜单</h2>
-      <p style="font-size:16px;color:var(--text-secondary);margin-bottom:14px;">
-        5套菜单轮换，保证营养均衡又不重复。点击日期展开详情。
-      </p>
-    </div>
-
-    <div class="week-selector" id="weekSelector"></div>
-    <div id="menuContent"></div>
-
-    <div class="card">
-      <h2>👩‍🍳 厨房操作提醒</h2>
-      <div class="tip-card">🧂 <strong>控盐：</strong>全天用盐不超过一啤酒瓶盖（约5克）。做菜时先不放盐，出锅前再撒一点，咸味更明显但总量更少。生抽也含盐，用了生抽就少放盐。</div>
-      <div class="tip-card">🫗 <strong>控油：</strong>每顿饭炒菜用油不超过一小汤匙（约7ml），全天不超过2小汤匙（20ml）。用不粘锅可以少放油。绝对不用猪油、羊油。</div>
-      <div class="tip-card">🥬 <strong>蔬菜必须做熟：</strong>洋葱、芹菜、木耳这些都要炒熟或煮熟才能吃。生的凉拌菜会刺激胃黏膜，吃了抗凝药后容易胃出血。</div>
-      <div class="tip-card">🍚 <strong>主食控量：</strong>早餐主食只选一种（红薯/小米/玉米糁），量不超过大半碗。不要又吃红薯又喝小米粥，碳水叠加血糖会飙。</div>
-      <div class="tip-card">🥚 <strong>鸡蛋处理：</strong>每天吃1-2个水煮蛋清，蛋黄每周最多1-2个。蛋黄胆固醇高，对他这种必须把坏胆固醇降到极低的人，蛋黄要严格限制。</div>
     </div>
   </div>
 
   <!-- ========== 饮食铁律 ========== -->
   <div id="sec-rules" class="section">
     <div class="card">
-      <h2>📌 9条饮食铁律</h2>
-      <p style="font-size:16px;color:var(--text-secondary);margin-bottom:14px;">
-        这些规则来自浙二和华山医院的专家建议，必须严格执行
+      <h2>📌 饮食铁律（必须严格执行）</h2>
+      <p style="font-size:18px;color:var(--text-secondary);margin-bottom:14px;">
+        这些规则来自浙二和华山医院的专家建议，不是"尽量做到"，是必须做到
       </p>
       <div id="rulesContent"></div>
+    </div>
+  </div>
+
+  <!-- ========== 生活禁忌 ========== -->
+  <div id="sec-life" class="section">
+    <div class="card">
+      <h2>⚠️ 日常生活禁忌</h2>
+      <p style="font-size:18px;color:var(--text-secondary);margin-bottom:16px;">
+        除了管好嘴，日常生活中这些事情也必须注意，直接关系到血管安全
+      </p>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--red);margin-top:0;">🚫 绝对禁止（违反有生命危险）</h3>
+
+      <div class="caution-card danger">
+        <div class="caution-icon">🍺</div>
+        <div class="caution-text">
+          <strong>绝对禁酒——白酒、啤酒、红酒、药酒，全部不能喝</strong>
+          酒精会升高血压、加速心跳、让血液更容易凝结。右侧锁骨下动脉已经狭窄73%，喝酒后血压一波动，斑块随时可能破裂。同时酒精和氯吡格雷（抗凝药）有冲突，会增加胃出血风险。一口都不能喝。
+        </div>
+      </div>
+
+      <div class="caution-card danger">
+        <div class="caution-icon">😤</div>
+        <div class="caution-text">
+          <strong>不能激动、不能生气、不能吵架</strong>
+          情绪激动时血压会急剧升高，心跳加快。对于血管里有斑块、有支架的人来说，血压骤升可能导致斑块破裂、支架处血栓形成，后果是脑梗或心梗。遇到生气的事，先深呼吸，走开，不争论。
+        </div>
+      </div>
+
+      <div class="caution-card danger">
+        <div class="caution-icon">🚜</div>
+        <div class="caution-text">
+          <strong>不能干农活、不能干重体力活</strong>
+          重体力劳动（搬东西、挖地、挑担子、推车）会让血压急剧升高，心脏负荷骤增。右侧锁骨下动脉已经重度狭窄，剧烈用力时右臂供血不足会加重，椎动脉盗血会更严重，可能出现头晕、晕厥甚至中风。
+        </div>
+      </div>
+
+      <div class="caution-card danger">
+        <div class="caution-icon">🚴</div>
+        <div class="caution-text">
+          <strong>不能骑自行车、电动车上公路</strong>
+          骑车需要持续用力（尤其上坡），会升高血压和心率。更危险的是：右侧椎动脉盗血+后循环缺血，骑车时可能突然头晕、视物模糊，在公路上极其危险。转头看路况时颈动脉受压，斑块风险更大。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--orange);margin-top:0;">⚠️ 必须注意（长期影响大）</h3>
+
+      <div class="caution-card warning">
+        <div class="caution-icon">🫖</div>
+        <div class="caution-text">
+          <strong>不能喝浓茶、浓咖啡</strong>
+          浓茶中的咖啡因和茶碱会升高血压、加速心跳，加重失眠。浓茶还会影响铁的吸收，加重四肢无力。可以喝淡茶（少放茶叶，泡淡一点），但浓茶必须戒。
+        </div>
+      </div>
+
+      <div class="caution-card warning">
+        <div class="caution-icon">😴</div>
+        <div class="caution-text">
+          <strong>保证睡眠，不能熬夜</strong>
+          顽固性失眠本身就会加重高血压和血管炎症。晚上9点后不喝茶、不看刺激性内容、不争论问题。睡前可以泡脚（水温38-40度，不要太烫）。如果实在睡不着，要跟医生说，必要时用助眠药。
+        </div>
+      </div>
+
+      <div class="caution-card warning">
+        <div class="caution-icon">🚗</div>
+        <div class="caution-text">
+          <strong>尽量少开车、不要长时间开车</strong>
+          开车时精神高度紧张，血压会升高。长时间坐姿固定，颈部血管受压，加重颈动脉供血问题。如果必须开车，每30分钟停下来活动一下，不走高速、不走山路、不夜间开车。头晕时绝不能开车。
+        </div>
+      </div>
+
+      <div class="caution-card warning">
+        <div class="caution-icon">🏋️</div>
+        <div class="caution-text">
+          <strong>不能做剧烈运动、不能突然用力</strong>
+          跑步、跳绳、举重、搬重物、弯腰猛起、蹲下猛站都不行。这些动作会导致血压骤升，对有斑块和支架的血管是直接威胁。可以散步（每次20-30分钟，慢走），这是最安全的运动。
+        </div>
+      </div>
+
+      <div class="caution-card warning">
+        <div class="caution-icon">🧊</div>
+        <div class="caution-text">
+          <strong>不能受凉、不能用凉水</strong>
+          冷刺激会导致血管急剧收缩，血压飙升。冬天出门要戴帽子、围巾（护住颈部血管）。不用凉水洗脸洗手，不吃冷饮冰棍。夏天空调不低于26度。
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="color:var(--blue);margin-top:0;">💡 建议坚持（有助于恢复）</h3>
+
+      <div class="caution-card info">
+        <div class="caution-icon">🚶</div>
+        <div class="caution-text">
+          <strong>每天散步20-30分钟</strong>
+          饭后半小时慢走，是最安全且对血管有益的运动。走路能改善全身血液循环，辅助降压降糖。不要快走，慢悠悠地走就好。天太热或太冷不出门，在家走也行。
+        </div>
+      </div>
+
+      <div class="caution-card info">
+        <div class="caution-icon">💊</div>
+        <div class="caution-text">
+          <strong>按时吃药，一顿都不能漏</strong>
+          氯吡格雷（防血栓）、他汀（降脂）、泮托拉唑（护胃）每天都要吃。PCSK9抑制剂每两周打一针，到日子必须打。漏药=血管里的"保护罩"消失，斑块随时可能出事。
+        </div>
+      </div>
+
+      <div class="caution-card info">
+        <div class="caution-icon">📋</div>
+        <div class="caution-text">
+          <strong>定期复查，监测血压血脂</strong>
+          每天量血压（早晚各一次），记录下来。每3个月查一次血脂（重点看LDL-C有没有降到1.0以下）。每半年做一次颈动脉超声，看斑块有没有变化。
+        </div>
+      </div>
     </div>
   </div>
 
@@ -492,10 +673,10 @@ body {
       <table class="info-table">
         <tr><th>年龄/性别</th><td>64岁 男性</td></tr>
         <tr><th>居住地</th><td>河南省南阳市农村</td></tr>
-        <tr><th>活动量</th><td>中等偏轻</td></tr>
-        <tr><th>医保</th><td>南阳市南召县医保</td></tr>
+        <tr><th>活动量</th><td>中等偏轻（禁止重体力劳动）</td></tr>
       </table>
     </div>
+
     <div class="card">
       <h2>🏥 确诊疾病</h2>
       <ul class="detail-list">
@@ -510,18 +691,41 @@ body {
         <li>🟠 胃溃疡（长期用抗血小板药，胃出血风险高）</li>
       </ul>
     </div>
+
+    <div class="card">
+      <h2>🩺 伴随症状</h2>
+      <p style="font-size:17px;color:var(--text-secondary);margin-bottom:14px;">
+        以下症状可能与血管病变、脑供血不足、药物副作用等多因素相关，部分与饮食习惯也有关联
+      </p>
+      <div style="margin-bottom:12px;">
+        <span class="symptom-tag vessel">头后部、颈部发僵发木</span>
+        <span class="symptom-tag vessel">手发木、发麻</span>
+        <span class="symptom-tag vessel">四肢无力</span>
+        <span class="symptom-tag neuro">顽固性失眠</span>
+        <span class="symptom-tag neuro">重度耳鸣</span>
+      </div>
+      <ul class="detail-list" style="font-size:16px;">
+        <li>💡 <span><strong>头颈发僵发木：</strong>与颈动脉斑块、椎动脉盗血导致的后循环缺血直接相关。饮食上需严格控脂控盐，避免血液黏稠度升高加重症状。</span></li>
+        <li>💡 <span><strong>手发木发麻：</strong>右侧锁骨下动脉重度狭窄（73.2%）导致右臂供血不足。避免右臂负重和用力动作。</span></li>
+        <li>💡 <span><strong>四肢无力：</strong>与全身动脉硬化、供血不足有关。保证蛋白质摄入（蛋清、鱼肉、豆腐），避免营养不良导致肌肉流失。</span></li>
+        <li>💡 <span><strong>顽固性失眠：</strong>脑供血不足+长期紧张焦虑。禁喝浓茶咖啡，晚餐不要吃太饱，睡前泡脚。</span></li>
+        <li>💡 <span><strong>重度耳鸣：</strong>与椎-基底动脉供血不足相关。控制好血压和血脂有助于改善。</span></li>
+      </ul>
+    </div>
+
     <div class="card">
       <h2>💊 当前用药</h2>
       <ul class="detail-list">
-        <li>💊 氯吡格雷 75mg/天（抗血小板，因胃溃疡禁用阿司匹林）</li>
-        <li>💊 泮托拉唑（护胃，保护胃黏膜）</li>
-        <li>💊 瑞舒伐他汀 小剂量（降脂）</li>
-        <li>💉 即将启动 PCSK9抑制剂 依洛尤单抗（每2周注射1针，强化降脂、逆转斑块）</li>
+        <li>💊 <span>氯吡格雷 75mg/天（抗血小板，因胃溃疡禁用阿司匹林）</span></li>
+        <li>💊 <span>泮托拉唑（护胃，保护胃黏膜）</span></li>
+        <li>💊 <span>瑞舒伐他汀 小剂量（降脂）</span></li>
+        <li>💉 <span>即将启动 PCSK9抑制剂 依洛尤单抗（每2周注射1针，强化降脂、逆转斑块）</span></li>
       </ul>
     </div>
+
     <div class="card">
       <h2>🎯 治疗方向</h2>
-      <p style="font-size:17px;line-height:1.8;">
+      <p style="font-size:19px;line-height:1.8;">
         <strong>保守治疗为主，暂不手术。</strong>核心目标：通过药物+饮食把LDL-C（坏胆固醇）降到极低水平（&lt;1.0），
         稳定并逆转血管斑块，控制血压在130左右，同时保护胃黏膜避免出血。
         饮食管理是药物治疗的重要配合，控好嘴等于帮药物多做一半的功。
@@ -530,8 +734,8 @@ body {
   </div>
 
   <div class="footer">
-    <p>⚠️ 本工具仅供参考，具体饮食请遵医嘱</p>
-    <p style="margin-top:6px;">基于浙二、华山医院专家建议制作</p>
+    <p>⚠️ 本页面仅供家庭参考，具体饮食和生活安排请遵医嘱</p>
+    <p style="margin-top:6px;">基于浙二、华山医院专家建议整理</p>
   </div>
 </div>
 
@@ -540,7 +744,6 @@ body {
 // FOOD DATABASE
 // ========================
 const FOOD_DB = {
-  // --- 推荐食物 ---
   "红薯": {
     rating: "recommend", ratingText: "✅ 推荐",
     freq: "每周4-5次，早餐主食三选一",
@@ -604,7 +807,7 @@ const FOOD_DB = {
     gi: 0, giLevel: "几乎不升糖",
     scores: { cardio: 90, bp: 83, stomach: 68, sugar: 95, vessel: 88 },
     impacts: [
-      { icon: "✅", text: "同样是优质蛋白来源，不饱和脂肪酸含量高" },
+      { icon: "✅", text: "优质蛋白来源，不饱和脂肪酸含量高" },
       { icon: "✅", text: "南阳本地容易买到，价格亲民" },
       { icon: "⚠️", text: "炖汤时不要放太多油，姜葱调味即可" }
     ],
@@ -627,7 +830,7 @@ const FOOD_DB = {
   "鸡蛋": {
     rating: "caution", ratingText: "⚠️ 有条件推荐",
     freq: "每天1-2个蛋清，蛋黄每周≤1-2个",
-    portion: "蛋清不限量（每天1-2个），蛋黄要严控",
+    portion: "蛋清不限（每天1-2个），蛋黄严控",
     gi: 0, giLevel: "几乎不升糖",
     scores: { cardio: 65, bp: 75, stomach: 70, sugar: 90, vessel: 60 },
     impacts: [
@@ -660,7 +863,6 @@ const FOOD_DB = {
     impacts: [
       { icon: "✅", text: "番茄红素是强抗氧化剂，保护血管内皮" },
       { icon: "✅", text: "钾含量高，辅助降压" },
-      { icon: "✅", text: "几乎不升糖" },
       { icon: "⚠️", text: "必须做熟吃（炒或煮），生吃可能刺激胃" }
     ],
     howTo: "番茄炒蛋（只用蛋清）、番茄豆腐汤都很好。做熟后番茄红素吸收率更高。"
@@ -768,8 +970,7 @@ const FOOD_DB = {
     scores: { cardio: 90, bp: 82, stomach: 70, sugar: 92, vessel: 88 },
     impacts: [
       { icon: "✅", text: "萝卜硫素有强抗氧化抗炎作用，保护血管内皮" },
-      { icon: "✅", text: "维生素C极高，增强免疫力" },
-      { icon: "✅", text: "几乎不升糖" }
+      { icon: "✅", text: "维生素C极高，增强免疫力" }
     ],
     howTo: "西兰花掰小朵，水焯后快炒。不要炒太久，保留营养。"
   },
@@ -843,8 +1044,7 @@ const FOOD_DB = {
     scores: { cardio: 72, bp: 75, stomach: 70, sugar: 50, vessel: 72 },
     impacts: [
       { icon: "✅", text: "含维生素C和膳食纤维" },
-      { icon: "⚠️", text: "淀粉含量较高，要算在主食里" },
-      { icon: "⚠️", text: "炖烂吃更好消化" }
+      { icon: "⚠️", text: "淀粉含量较高，要算在主食里" }
     ],
     howTo: "莲藕炖排骨（去肥肉）或莲藕片炒木耳。"
   },
@@ -870,7 +1070,7 @@ const FOOD_DB = {
     impacts: [
       { icon: "✅", text: "助消化，膳食纤维丰富" },
       { icon: "✅", text: "热量极低" },
-      { icon: "⚠️", text: "炖煮为主，不要腌制（咸菜萝卜不算）" }
+      { icon: "⚠️", text: "炖煮为主，不要腌制" }
     ],
     howTo: "萝卜炖排骨（去肥肉），或萝卜丝汤。"
   },
@@ -884,7 +1084,7 @@ const FOOD_DB = {
       { icon: "✅", text: "蛋白质含量高，是很好的蛋白质来源" },
       { icon: "✅", text: "大豆制品对血管保护有益" }
     ],
-    howTo: "豆腐皮炒芹菜，或凉拌豆腐皮（但要用热水烫过）。"
+    howTo: "豆腐皮炒芹菜，或热水烫过后拌调料。"
   },
   "长豆角": {
     rating: "recommend", ratingText: "✅ 推荐",
@@ -896,7 +1096,7 @@ const FOOD_DB = {
       { icon: "✅", text: "含植物蛋白和膳食纤维" },
       { icon: "⚠️", text: "必须炒熟炒透！生豆角有毒素" }
     ],
-    howTo: "豆角切段，少油快炒至变色，再加少量水焖熟。确保熟透。也可以炖豆角。"
+    howTo: "豆角切段，少油快炒至变色，再加少量水焖熟。也可以炖豆角。"
   },
   "绿豆": {
     rating: "recommend", ratingText: "✅ 推荐",
@@ -909,7 +1109,7 @@ const FOOD_DB = {
       { icon: "✅", text: "升糖指数低" },
       { icon: "⚠️", text: "绿豆汤不加糖" }
     ],
-    howTo: "绿豆汤：绿豆泡2小时，煮至开花。不加糖。"
+    howTo: "绿豆泡2小时，煮至开花。不加糖。"
   },
   "红豆": {
     rating: "recommend", ratingText: "✅ 推荐",
@@ -957,7 +1157,7 @@ const FOOD_DB = {
       { icon: "✅", text: "含钾量高，辅助降压" },
       { icon: "✅", text: "有特殊香气，促进食欲" }
     ],
-    howTo: "茼蒿清炒或做汤。快炒即可，不用炒太久。"
+    howTo: "茼蒿清炒或做汤。快炒即可。"
   },
   "平菇": {
     rating: "recommend", ratingText: "✅ 推荐",
@@ -978,7 +1178,7 @@ const FOOD_DB = {
     gi: 10, giLevel: "低",
     scores: { cardio: 82, bp: 76, stomach: 68, sugar: 90, vessel: 80 },
     impacts: [
-      { icon: "✅", text: "膳食纤维丰富，有助于降低胆固醇吸收" },
+      { icon: "✅", text: "膳食纤维丰富，减少胆固醇吸收" },
       { icon: "⚠️", text: "一定要煮熟，不好消化的话切短一点" }
     ],
     howTo: "金针菇煮汤，或炒时切段。"
@@ -986,19 +1186,16 @@ const FOOD_DB = {
   "西瓜": {
     rating: "limit", ratingText: "🟡 限量吃",
     freq: "每周1-2次，当季",
-    portion: "每次一小牙（约200g），不超过2小块",
+    portion: "每次一小牙（约200g）",
     gi: 72, giLevel: "高",
     scores: { cardio: 60, bp: 65, stomach: 70, sugar: 30, vessel: 62 },
     impacts: [
       { icon: "⚠️", text: "升糖指数高（GI=72），吃多了血糖飙升" },
       { icon: "✅", text: "含瓜氨酸，有一定扩张血管作用" },
-      { icon: "❌", text: "不能当水果随便吃，更不能一次吃半个" },
-      { icon: "⚠️", text: "冰西瓜绝对不行，会刺激胃" }
+      { icon: "❌", text: "不能一次吃半个，更不能吃冰西瓜" }
     ],
-    howTo: "室温西瓜，切一小牙慢慢吃。不要冰镇。饭后2小时再吃。"
+    howTo: "室温西瓜，切一小牙慢慢吃。饭后2小时再吃。"
   },
-
-  // --- 需限制的食物 ---
   "馒头": {
     rating: "limit", ratingText: "🟡 严格限量",
     freq: "每周2-3次，每次1个小馒头",
@@ -1011,7 +1208,7 @@ const FOOD_DB = {
       { icon: "⚠️", text: "南阳主食文化离不开馒头，但必须控量" },
       { icon: "✅", text: "可以换杂粮馒头（玉米面+全麦面），升糖会低一些" }
     ],
-    howTo: "一个小馒头配大量蔬菜和蛋白质。细嚼慢咽（咀嚼20次以上再咽）可以延缓升糖。尽量换杂粮馒头。"
+    howTo: "一个小馒头配大量蔬菜和蛋白质。尽量换杂粮馒头。"
   },
   "汤面条": {
     rating: "limit", ratingText: "🟡 严格限量",
@@ -1021,11 +1218,10 @@ const FOOD_DB = {
     scores: { cardio: 42, bp: 45, stomach: 70, sugar: 22, vessel: 45 },
     impacts: [
       { icon: "❌", text: "白面条升糖快，面汤更是纯碳水" },
-      { icon: "⚠️", text: "面条要煮硬一点（al dente），比煮软的升糖慢" },
-      { icon: "✅", text: "加很多蔬菜（白菜、番茄、菠菜）可以延缓升糖" },
-      { icon: "⚠️", text: "汤底不要放太多盐" }
+      { icon: "⚠️", text: "面条要煮硬一点，比煮软的升糖慢" },
+      { icon: "✅", text: "加很多蔬菜可以延缓升糖" }
     ],
-    howTo: "面条煮至刚熟（不要太软），碗里大半是菜，面条只占小半。汤少喝。"
+    howTo: "面条煮至刚熟，碗里大半是菜，面条只占小半。汤少喝。"
   },
   "蒸面条": {
     rating: "limit", ratingText: "🟡 严格限量",
@@ -1035,7 +1231,6 @@ const FOOD_DB = {
     scores: { cardio: 38, bp: 42, stomach: 65, sugar: 22, vessel: 42 },
     impacts: [
       { icon: "❌", text: "蒸面条通常用油拌过，油量不好控制" },
-      { icon: "❌", text: "升糖指数高" },
       { icon: "⚠️", text: "做的时候少放油，多放豆角和蔬菜" }
     ],
     howTo: "面条先蒸再和大量蔬菜拌匀。油量控制在一小汤匙以内。"
@@ -1047,11 +1242,11 @@ const FOOD_DB = {
     gi: 78, giLevel: "高",
     scores: { cardio: 40, bp: 45, stomach: 65, sugar: 25, vessel: 42 },
     impacts: [
-      { icon: "⚠️", text: "捞面比汤面好一点（过凉水后淀粉回生，升糖略低）" },
+      { icon: "⚠️", text: "捞面过凉水后淀粉回生，升糖略低于汤面" },
       { icon: "❌", text: "浇头通常高油高盐" },
       { icon: "✅", text: "用番茄蛋清卤、蔬菜卤替代肉卤" }
     ],
-    howTo: "面条过凉水，配清淡浇头（番茄蛋清、黄瓜丝做熟）。"
+    howTo: "面条过凉水，配清淡浇头。"
   },
   "烩面": {
     rating: "avoid", ratingText: "❌ 不推荐",
@@ -1060,10 +1255,9 @@ const FOOD_DB = {
     gi: 85, giLevel: "高",
     scores: { cardio: 25, bp: 30, stomach: 50, sugar: 18, vessel: 28 },
     impacts: [
-      { icon: "❌", text: "烩面本身碳水极高，一碗烩面=3个馒头的碳水" },
+      { icon: "❌", text: "一碗烩面=3个馒头的碳水" },
       { icon: "❌", text: "汤底是骨汤/羊汤，饱和脂肪和嘌呤都高" },
-      { icon: "❌", text: "通常很咸，一碗含盐量可能超过全天标准" },
-      { icon: "❌", text: "羊肉烩面更不行——羊肉是红肉，饱和脂肪高" }
+      { icon: "❌", text: "通常很咸，一碗含盐量可能超过全天标准" }
     ],
     howTo: "如果实在嘴馋，吃半碗清汤的，面少菜多，汤别喝。但最好不吃。"
   },
@@ -1075,22 +1269,20 @@ const FOOD_DB = {
     scores: { cardio: 18, bp: 22, stomach: 40, sugar: 15, vessel: 20 },
     impacts: [
       { icon: "❌", text: "烙饼需要大量油，远超每日油量限制" },
-      { icon: "❌", text: "高碳水+高油脂的最糟组合" },
-      { icon: "❌", text: "升糖极快，对血管是双重打击" }
+      { icon: "❌", text: "高碳水+高油脂的最糟组合" }
     ],
-    howTo: "用杂粮煎饼替代：绿豆面+少量油在不粘锅上摊薄饼，比葱油饼好很多。"
+    howTo: "用杂粮煎饼替代：绿豆面+少量油在不粘锅上摊薄饼。"
   },
   "油条": {
-    rating: "avoid", ratingText: "❌ 不推荐",
-    freq: "尽量不吃",
+    rating: "avoid", ratingText: "❌ 禁止",
+    freq: "彻底不吃",
     portion: "—",
     gi: 75, giLevel: "高",
     scores: { cardio: 10, bp: 15, stomach: 30, sugar: 15, vessel: 12 },
     impacts: [
       { icon: "❌", text: "油炸食品——油脂氧化产物直接损伤血管内皮" },
       { icon: "❌", text: "一根油条吸油约25ml，超过全天用油量" },
-      { icon: "❌", text: "反复使用的炸油含大量反式脂肪酸" },
-      { icon: "❌", text: "油炸食物对胃溃疡刺激极大" }
+      { icon: "❌", text: "反复使用的炸油含大量反式脂肪酸" }
     ],
     howTo: "彻底戒掉。早餐用蒸红薯/小米粥/燕麦替代。"
   },
@@ -1105,7 +1297,7 @@ const FOOD_DB = {
       { icon: "❌", text: "高钠导致血压飙升，加速血管钙化" },
       { icon: "❌", text: "腌制食品含亚硝酸盐，对胃黏膜有伤害" }
     ],
-    howTo: "用新鲜蔬菜替代。想要下饭菜的话，可以用番茄炒蛋清。"
+    howTo: "用新鲜蔬菜替代。想下饭可以用番茄炒蛋清。"
   },
   "酱豆": {
     rating: "avoid", ratingText: "❌ 禁止",
@@ -1123,12 +1315,11 @@ const FOOD_DB = {
     rating: "avoid", ratingText: "❌ 不推荐",
     freq: "尽量不吃",
     portion: "—",
-    gi: 30, giLevel: "中低（但含糖）",
+    gi: 30, giLevel: "中低",
     scores: { cardio: 20, bp: 25, stomach: 25, sugar: 25, vessel: 22 },
     impacts: [
       { icon: "❌", text: "腌制过程加了大量糖和盐" },
-      { icon: "❌", text: "醋和糖对胃溃疡都有刺激" },
-      { icon: "⚠️", text: "新鲜大蒜少量（做菜调味）是可以的，但糖蒜不行" }
+      { icon: "❌", text: "醋和糖对胃溃疡都有刺激" }
     ],
     howTo: "用少量新鲜大蒜末做菜调味替代。"
   },
@@ -1142,7 +1333,7 @@ const FOOD_DB = {
       { icon: "❌", text: "高盐腌制品，含盐量极高" },
       { icon: "❌", text: "发酵过程产生的物质对胃有刺激" }
     ],
-    howTo: "不吃。用新鲜番茄酱（自己做的，不加盐）替代。"
+    howTo: "不吃。"
   },
   "猪肉": {
     rating: "limit", ratingText: "🟡 严格限量",
@@ -1153,86 +1344,71 @@ const FOOD_DB = {
     impacts: [
       { icon: "❌", text: "猪肉饱和脂肪含量高，直接升高LDL-C" },
       { icon: "⚠️", text: "纯瘦肉（里脊）少量可以" },
-      { icon: "❌", text: "肥肉、五花肉绝对禁止" },
-      { icon: "✅", text: "用草鱼/鲤鱼/鸡胸肉替代" }
+      { icon: "❌", text: "肥肉、五花肉绝对禁止" }
     ],
-    howTo: "纯瘦肉切细丝，少油快炒配蔬菜。量要小，配角不是主角。"
+    howTo: "纯瘦肉切细丝，少油快炒配蔬菜。量要小。"
   },
   "猪耳朵": {
     rating: "avoid", ratingText: "❌ 不推荐",
-    freq: "尽量不吃",
-    portion: "—",
+    freq: "尽量不吃", portion: "—",
     gi: 0, giLevel: "—",
     scores: { cardio: 18, bp: 35, stomach: 45, sugar: 80, vessel: 20 },
     impacts: [
       { icon: "❌", text: "卤制品通常高盐高油" },
-      { icon: "❌", text: "猪耳朵含大量胶原蛋白和脂肪" },
-      { icon: "❌", text: "卤水中的调料对胃有刺激" }
+      { icon: "❌", text: "猪耳朵含大量胶原蛋白和脂肪" }
     ],
     howTo: "不吃。"
   },
   "卤猪肉": {
     rating: "avoid", ratingText: "❌ 不推荐",
-    freq: "尽量不吃",
-    portion: "—",
+    freq: "尽量不吃", portion: "—",
     gi: 0, giLevel: "—",
     scores: { cardio: 15, bp: 20, stomach: 40, sugar: 80, vessel: 18 },
     impacts: [
-      { icon: "❌", text: "卤猪肉通常是五花肉或带肥肉，饱和脂肪极高" },
-      { icon: "❌", text: "卤汁含大量盐、糖、酱油" },
-      { icon: "❌", text: "一块卤肉的盐和脂肪可能超过半天配额" }
+      { icon: "❌", text: "卤猪肉通常是五花肉，饱和脂肪极高" },
+      { icon: "❌", text: "卤汁含大量盐、糖、酱油" }
     ],
-    howTo: "不吃。用清蒸鱼或白灼鸡胸肉替代。"
+    howTo: "不吃。用清蒸鱼替代。"
   },
   "猪脸": {
     rating: "avoid", ratingText: "❌ 不推荐",
-    freq: "尽量不吃",
-    portion: "—",
+    freq: "尽量不吃", portion: "—",
     gi: 0, giLevel: "—",
     scores: { cardio: 12, bp: 22, stomach: 40, sugar: 80, vessel: 15 },
-    impacts: [
-      { icon: "❌", text: "脂肪含量极高" },
-      { icon: "❌", text: "卤制高盐" }
-    ],
+    impacts: [{ icon: "❌", text: "脂肪含量极高+卤制高盐" }],
     howTo: "不吃。"
   },
   "猪脚": {
     rating: "avoid", ratingText: "❌ 不推荐",
-    freq: "尽量不吃",
-    portion: "—",
+    freq: "尽量不吃", portion: "—",
     gi: 0, giLevel: "—",
     scores: { cardio: 12, bp: 25, stomach: 42, sugar: 80, vessel: 15 },
     impacts: [
-      { icon: "❌", text: "胆固醇含量极高" },
-      { icon: "❌", text: "脂肪含量高" },
+      { icon: "❌", text: "胆固醇和脂肪含量极高" },
       { icon: "❌", text: "红烧猪脚还有大量糖和盐" }
     ],
     howTo: "不吃。想补胶原蛋白不如吃银耳汤。"
   },
   "羊肉": {
     rating: "avoid", ratingText: "❌ 不推荐",
-    freq: "尽量不吃",
-    portion: "—",
+    freq: "尽量不吃", portion: "—",
     gi: 0, giLevel: "—",
     scores: { cardio: 15, bp: 30, stomach: 45, sugar: 82, vessel: 18 },
     impacts: [
       { icon: "❌", text: "红肉，饱和脂肪含量高，直接升高LDL-C" },
-      { icon: "❌", text: "羊肉性热，对高血压不利" },
-      { icon: "❌", text: "南阳羊肉做法通常重油重盐（烩面、炖汤）" }
+      { icon: "❌", text: "南阳做法通常重油重盐" }
     ],
     howTo: "不吃。用鱼肉和鸡胸肉替代。"
   },
   "羊肉饺子": {
     rating: "avoid", ratingText: "❌ 不推荐",
-    freq: "尽量不吃",
-    portion: "—",
+    freq: "尽量不吃", portion: "—",
     gi: 70, giLevel: "高",
     scores: { cardio: 15, bp: 25, stomach: 40, sugar: 22, vessel: 18 },
     impacts: [
-      { icon: "❌", text: "羊肉+白面皮=高饱和脂肪+高碳水的双重打击" },
-      { icon: "❌", text: "饺子馅通常还加不少油和盐" }
+      { icon: "❌", text: "羊肉+白面皮=高饱和脂肪+高碳水的双重打击" }
     ],
-    howTo: "如果想吃饺子，改成：鸡胸肉+白菜馅，或鱼肉+芹菜馅。皮少馅多。"
+    howTo: "改成鸡胸肉+白菜馅或鱼肉+芹菜馅饺子。"
   },
   "韭菜鸡蛋饺子": {
     rating: "limit", ratingText: "🟡 偶尔可以",
@@ -1243,37 +1419,31 @@ const FOOD_DB = {
     impacts: [
       { icon: "⚠️", text: "白面皮升糖高" },
       { icon: "⚠️", text: "韭菜对胃有一定刺激" },
-      { icon: "⚠️", text: "馅里鸡蛋用蛋清，少放油" },
       { icon: "✅", text: "比羊肉饺子好很多" }
     ],
-    howTo: "用蛋清+韭菜+虾皮做馅，少放油。煮饺子，不煎。控制数量在10个以内。"
+    howTo: "蛋清+韭菜+虾皮做馅，少放油。煮饺子，不煎。控制在10个以内。"
   },
   "炸茄饼": {
     rating: "avoid", ratingText: "❌ 禁止",
-    freq: "彻底不吃",
-    portion: "—",
+    freq: "彻底不吃", portion: "—",
     gi: 80, giLevel: "高",
     scores: { cardio: 8, bp: 12, stomach: 15, sugar: 12, vessel: 10 },
     impacts: [
       { icon: "❌", text: "油炸+高碳水，最糟糕的组合" },
-      { icon: "❌", text: "一个炸茄饼吸油量≈20-30ml" },
-      { icon: "❌", text: "油炸食物对胃溃疡是直接打击" },
-      { icon: "❌", text: "氧化油脂直接损伤血管内皮" }
+      { icon: "❌", text: "一个炸茄饼吸油量≈20-30ml" }
     ],
     howTo: "彻底戒掉。想吃茄子就蒸着吃。"
   },
   "粉条凉菜": {
     rating: "avoid", ratingText: "❌ 不推荐",
-    freq: "尽量不吃",
-    portion: "—",
+    freq: "尽量不吃", portion: "—",
     gi: 60, giLevel: "中等",
     scores: { cardio: 25, bp: 30, stomach: 20, sugar: 35, vessel: 28 },
     impacts: [
       { icon: "❌", text: "凉拌菜对胃溃疡患者风险大" },
-      { icon: "❌", text: "凉菜通常放很多醋、辣椒油、蒜汁" },
-      { icon: "⚠️", text: "粉条本身升糖中等，但凉拌的调味才是大问题" }
+      { icon: "❌", text: "凉菜通常放很多醋、辣椒油、蒜汁" }
     ],
-    howTo: "如果想吃粉条，改成粉条炖白菜（热菜），少放盐和油。"
+    howTo: "改成粉条炖白菜（热菜），少放盐和油。"
   },
   "牛肉": {
     rating: "limit", ratingText: "🟡 偶尔可以",
@@ -1282,12 +1452,11 @@ const FOOD_DB = {
     gi: 0, giLevel: "几乎不升糖",
     scores: { cardio: 40, bp: 50, stomach: 55, sugar: 85, vessel: 42 },
     impacts: [
-      { icon: "⚠️", text: "红肉，饱和脂肪比鱼肉高，但比猪肉略好" },
+      { icon: "⚠️", text: "红肉，饱和脂肪比鱼肉高" },
       { icon: "✅", text: "铁和锌含量高，防贫血" },
-      { icon: "⚠️", text: "必须选纯瘦肉，炖烂吃" },
-      { icon: "❌", text: "牛肉烩面不行——烩面本身就不推荐" }
+      { icon: "⚠️", text: "必须选纯瘦肉，炖烂吃" }
     ],
-    howTo: "纯瘦牛肉切丁炖萝卜汤，或炒芹菜。少油少盐。"
+    howTo: "纯瘦牛肉切丁炖萝卜汤。少油少盐。"
   },
   "蘑干": {
     rating: "recommend", ratingText: "✅ 推荐",
@@ -1297,8 +1466,7 @@ const FOOD_DB = {
     scores: { cardio: 82, bp: 76, stomach: 72, sugar: 88, vessel: 80 },
     impacts: [
       { icon: "✅", text: "菌类含多糖，有助于免疫调节和降脂" },
-      { icon: "✅", text: "高纤维低热量" },
-      { icon: "⚠️", text: "炒的时候少放油" }
+      { icon: "✅", text: "高纤维低热量" }
     ],
     howTo: "蘑干泡发后少油快炒，配青椒或芹菜。"
   },
@@ -1313,328 +1481,386 @@ const FOOD_DB = {
       { icon: "⚠️", text: "升糖偏高，控量吃" }
     ],
     howTo: "清炒或炖汤，少放油。"
+  },
+  "白酒": {
+    rating: "avoid", ratingText: "❌ 绝对禁止",
+    freq: "一口都不能喝",
+    portion: "—",
+    gi: 0, giLevel: "—",
+    scores: { cardio: 2, bp: 3, stomach: 5, sugar: 50, vessel: 3 },
+    impacts: [
+      { icon: "❌", text: "酒精升高血压、加速心跳，斑块破裂风险极高" },
+      { icon: "❌", text: "酒精与氯吡格雷冲突，增加胃出血风险" },
+      { icon: "❌", text: "酒精直接损伤血管内皮，加速动脉硬化" },
+      { icon: "❌", text: "包括白酒、啤酒、红酒、药酒，全部禁止" }
+    ],
+    howTo: "一口都不能喝。没有"少喝一点没事"这种说法。"
+  },
+  "啤酒": {
+    rating: "avoid", ratingText: "❌ 绝对禁止",
+    freq: "一口都不能喝", portion: "—",
+    gi: 0, giLevel: "—",
+    scores: { cardio: 2, bp: 3, stomach: 5, sugar: 40, vessel: 3 },
+    impacts: [
+      { icon: "❌", text: "同白酒一样，绝对禁止" },
+      { icon: "❌", text: "啤酒还会导致尿酸升高" }
+    ],
+    howTo: "不喝。"
+  },
+  "红酒": {
+    rating: "avoid", ratingText: "❌ 绝对禁止",
+    freq: "一口都不能喝", portion: "—",
+    gi: 0, giLevel: "—",
+    scores: { cardio: 5, bp: 5, stomach: 8, sugar: 45, vessel: 5 },
+    impacts: [
+      { icon: "❌", text: "\"红酒软化血管\"是谣言，已被医学界否定" },
+      { icon: "❌", text: "酒精对血管的伤害远大于红酒中微量抗氧化物的益处" }
+    ],
+    howTo: "不喝。别信\"每天一杯红酒\"的说法。"
+  },
+  "浓茶": {
+    rating: "avoid", ratingText: "❌ 不推荐",
+    freq: "不喝浓茶，可以喝淡茶",
+    portion: "淡茶每天1-2杯（下午3点前喝完）",
+    gi: 0, giLevel: "—",
+    scores: { cardio: 30, bp: 20, stomach: 25, sugar: 90, vessel: 30 },
+    impacts: [
+      { icon: "❌", text: "咖啡因升高血压、加速心跳" },
+      { icon: "❌", text: "加重失眠，而失眠会进一步升高血压" },
+      { icon: "❌", text: "影响铁吸收，加重四肢无力" },
+      { icon: "⚠️", text: "淡茶可以少量喝，但下午3点后不要喝" }
+    ],
+    howTo: "茶叶放少一点泡淡茶。下午3点前喝完。不喝隔夜茶。"
   }
 };
 
 // ========================
-// 9 RULES
+// RULES (11 条)
 // ========================
 const RULES = [
+  { text: "绝对禁酒——白酒、啤酒、红酒、药酒，一口都不能喝", reason: "酒精升高血压、加速心跳、损伤血管内皮。与氯吡格雷冲突会增加胃出血风险。右侧锁骨下动脉狭窄73%，喝酒后血压波动斑块随时可能出事", highlight: "绝对禁酒", isRed: true },
   { text: "早餐主食三选一（红薯、小米、玉米糁只选一种），量≤大半碗", reason: "避免餐后血糖飙升，减轻血管内皮炎症反应，防止斑块不稳定甚至破裂", highlight: "三选一" },
-  { text: "早饭剩粥绝不中午续碗", reason: "避免午后血液黏稠度升高、脑供血不足加重（右侧椎动脉盗血+锁骨下动脉重度狭窄，本来后循环就缺血）", highlight: "绝不" },
+  { text: "早饭剩粥绝不中午续碗", reason: "避免午后血液黏稠度升高、脑供血不足加重（右侧椎动脉盗血+锁骨下动脉重度狭窄，后循环本来就缺血）", highlight: "绝不" },
   { text: "鸡蛋只吃水煮蛋清，蛋黄每周≤1-2个", reason: "严格限制外源性胆固醇摄入，配合PCSK9抑制剂把LDL-C降到<1.0", highlight: "蛋黄" },
   { text: "全天食盐总量<5克（一啤酒瓶盖），禁咸菜、酸菜、酱豆", reason: "控制血压在130左右，延缓血管钙化进程", highlight: "禁" },
   { text: "每天烹饪用油≤2小汤匙（约20ml），禁用猪油、羊油", reason: "减少饱和脂肪酸摄入，降低LDL-C", highlight: "猪油、羊油" },
-  { text: "所有蔬菜必须做熟食用，严禁生拌或凉拌", reason: "保护胃黏膜——吃着氯吡格雷（抗凝药），胃本身就有溃疡，生冷食物会加重出血风险", highlight: "严禁" },
+  { text: "所有蔬菜必须做熟食用，严禁生拌或凉拌", reason: "保护胃黏膜——吃着氯吡格雷（抗凝药），胃本身就有溃疡，生冷食物加重出血风险", highlight: "严禁" },
   { text: "每周吃2次当地淡水鱼（草鱼/鲤鱼）替代猪肉/羊肉", reason: "提供优质不饱和脂肪酸，降低甘油三酯，保护血管", highlight: "替代" },
   { text: "每日保证1-2个蛋清+适量豆腐/鸡胸肉提供蛋白质", reason: "维持肌肉量，避免营养不良——限制这么多食物，蛋白质必须保证", highlight: "保证" },
-  { text: "多用蒸、煮、炖、快炒，禁用油炸、红烧", reason: "减少油脂氧化产物对血管内皮的损伤。油条、炸茄饼之类的彻底戒掉", highlight: "禁用" }
+  { text: "多用蒸、煮、炖、快炒，禁用油炸、红烧", reason: "减少油脂氧化产物对血管内皮的损伤。油条、炸茄饼之类的彻底戒掉", highlight: "禁用" },
+  { text: "不喝浓茶、不喝咖啡，淡茶下午3点前喝完", reason: "咖啡因升高血压、加重失眠。失眠又进一步升高血压，形成恶性循环", highlight: "浓茶" }
 ];
 
 // ========================
-// 5 WEEKS MENU
+// 8 WEEKS MENU
 // ========================
 const MENUS = {
   "第一周": [
-    {
-      day: "周一",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 蒜蓉炒油麦菜", reason: "小米养胃，蛋清补蛋白，绿叶菜补维生素和纤维" },
-        { title: "🌞 午餐", items: "杂粮小馒头1个 + 清蒸草鱼（一掌心）+ 番茄炒蛋清 + 炒白菜", reason: "草鱼提供好脂肪降甘油三酯，番茄红素保护血管" },
-        { title: "🌙 晚餐", items: "红薯半碗 + 小白菜炖豆腐 + 炒丝瓜", reason: "晚餐清淡，红薯纤维帮助肠道，豆腐补蛋白" }
-      ]
-    },
-    {
-      day: "周二",
-      meals: [
-        { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "玉米糁粗粮升糖比白面低，茼蒿含钾辅助降压" },
-        { title: "🌞 午餐", items: "燕麦饭小碗 + 鸡胸肉炒西兰花 + 紫菜蛋花汤（蛋清）", reason: "燕麦β-葡聚糖直接降LDL-C，鸡胸肉高蛋白低脂" },
-        { title: "🌙 晚餐", items: "绿豆汤小碗 + 平菇炒青菜 + 蒸山药一小段", reason: "绿豆清热利尿，山药养胃但算主食" }
-      ]
-    },
-    {
-      day: "周三",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "红薯纤维+钾控压，芹菜素辅助降压" },
-        { title: "🌞 午餐", items: "小米饭小碗 + 鲤鱼炖豆腐 + 炒木耳", reason: "鲤鱼+豆腐双优质蛋白，木耳膳食纤维帮助排胆固醇" },
-        { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸茄子 + 炒长豆角", reason: "红豆利尿控压，蒸茄子不吸油，花青素抗氧化" }
-      ]
-    },
-    {
-      day: "周四",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱槲皮素抗炎，但一定要炒熟" },
-        { title: "🌞 午餐", items: "杂粮小馒头1个 + 草鱼炖萝卜 + 炒西葫芦", reason: "草鱼日，补不饱和脂肪酸。萝卜助消化" },
-        { title: "🌙 晚餐", items: "玉米糁粥小碗 + 香菇炒油麦菜 + 豆腐皮炒芹菜", reason: "晚餐少主食多菜，菌菇和豆制品都是好选择" }
-      ]
-    },
-    {
-      day: "周五",
-      meals: [
-        { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 蒜蓉炒白菜", reason: "燕麦是降胆固醇最好的主食选择" },
-        { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒木耳 + 番茄豆腐汤", reason: "鸡胸肉低脂高蛋白，番茄豆腐汤两全其美" },
-        { title: "🌙 晚餐", items: "绿豆面糊糊小碗 + 冬瓜炖豆腐 + 炒丝瓜", reason: "绿豆面升糖低于白面，冬瓜利尿辅助降压" }
-      ]
-    },
-    {
-      day: "周六",
-      meals: [
-        { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "周末也保持规律，不因放松打乱节奏" },
-        { title: "🌞 午餐", items: "小碗面条（50g干面）+ 大量蔬菜浇头（番茄+白菜+平菇）", reason: "偶尔吃面，但面少菜多，控制碳水总量" },
-        { title: "🌙 晚餐", items: "小米粥小碗 + 鲤鱼炖冬瓜 + 凉拌豆腐皮（热水烫过）", reason: "鲤鱼日，配冬瓜利尿降压" }
-      ]
-    },
-    {
-      day: "周日",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 香菇炒青菜", reason: "用红薯开启新的一天" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦牛肉炒芹菜（50g瘦肉）+ 海带豆腐汤", reason: "一周一次瘦牛肉补铁锌，海带多糖降脂" },
-        { title: "🌙 晚餐", items: "燕麦粥小碗 + 蒸茄子 + 炒长豆角", reason: "周日晚餐清淡收尾" }
-      ]
-    }
+    { day: "周一", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 蒜蓉炒油麦菜", reason: "小米养胃，蛋清补蛋白，绿叶菜补维生素和纤维" },
+      { title: "🌞 午餐", items: "杂粮小馒头1个 + 清蒸草鱼（一掌心）+ 番茄炒蛋清 + 炒白菜", reason: "草鱼提供好脂肪降甘油三酯，番茄红素保护血管" },
+      { title: "🌙 晚餐", items: "红薯半碗 + 小白菜炖豆腐 + 炒丝瓜", reason: "晚餐清淡，红薯纤维帮助肠道，豆腐补蛋白" }
+    ]},
+    { day: "周二", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "玉米糁粗粮升糖比白面低，茼蒿含钾辅助降压" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 鸡胸肉炒西兰花 + 紫菜蛋花汤（蛋清）", reason: "燕麦β-葡聚糖直接降LDL-C，鸡胸肉高蛋白低脂" },
+      { title: "🌙 晚餐", items: "绿豆汤小碗 + 平菇炒青菜 + 蒸山药一小段", reason: "绿豆清热利尿，山药养胃但算主食" }
+    ]},
+    { day: "周三", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "红薯纤维+钾控压，芹菜素辅助降压" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 鲤鱼炖豆腐 + 炒木耳", reason: "鲤鱼+豆腐双优质蛋白，木耳膳食纤维帮助排胆固醇" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸茄子 + 炒长豆角", reason: "红豆利尿控压，蒸茄子不吸油，花青素抗氧化" }
+    ]},
+    { day: "周四", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱槲皮素抗炎，但一定要炒熟" },
+      { title: "🌞 午餐", items: "杂粮小馒头1个 + 草鱼炖萝卜 + 炒西葫芦", reason: "草鱼日，补不饱和脂肪酸。萝卜助消化" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 香菇炒油麦菜 + 豆腐皮炒芹菜", reason: "晚餐少主食多菜，菌菇和豆制品都是好选择" }
+    ]},
+    { day: "周五", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 蒜蓉炒白菜", reason: "燕麦是降胆固醇最好的主食选择" },
+      { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒木耳 + 番茄豆腐汤", reason: "鸡胸肉低脂高蛋白，番茄豆腐汤两全其美" },
+      { title: "🌙 晚餐", items: "绿豆面糊糊小碗 + 冬瓜炖豆腐 + 炒丝瓜", reason: "绿豆面升糖低于白面，冬瓜利尿辅助降压" }
+    ]},
+    { day: "周六", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "周末也保持规律，不因放松打乱节奏" },
+      { title: "🌞 午餐", items: "小碗面条（50g干面）+ 大量蔬菜浇头（番茄+白菜+平菇）", reason: "偶尔吃面，但面少菜多，控制碳水总量" },
+      { title: "🌙 晚餐", items: "小米粥小碗 + 鲤鱼炖冬瓜 + 豆腐皮拌菜（热水烫过）", reason: "鲤鱼日，配冬瓜利尿降压" }
+    ]},
+    { day: "周日", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 香菇炒青菜", reason: "用红薯开启新的一天" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦牛肉炒芹菜（50g瘦肉）+ 海带豆腐汤", reason: "一周一次瘦牛肉补铁锌，海带多糖降脂" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 蒸茄子 + 炒长豆角", reason: "周日晚餐清淡收尾" }
+    ]}
   ],
   "第二周": [
-    {
-      day: "周一",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "简单养胃的一天开始" },
-        { title: "🌞 午餐", items: "小米饭小碗 + 清蒸草鱼 + 炒西兰花 + 紫菜汤", reason: "草鱼+西兰花是血管友好组合" },
-        { title: "🌙 晚餐", items: "绿豆粥小碗 + 豆腐炖白菜 + 炒洋葱", reason: "绿豆清热，豆腐补蛋白" }
-      ]
-    },
-    {
-      day: "周二",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "芹菜素降压，配小米养胃" },
-        { title: "🌞 午餐", items: "燕麦饭小碗 + 鸡胸肉炒香菇 + 番茄蛋花汤", reason: "燕麦降胆固醇，鸡胸肉低脂" },
-        { title: "🌙 晚餐", items: "红豆粥小碗 + 冬瓜炖虾皮 + 蒸山药", reason: "红豆利尿，虾皮少量补钙" }
-      ]
-    },
-    {
-      day: "周三",
-      meals: [
-        { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒金针菇", reason: "金针菇膳食纤维减少胆固醇吸收" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 鲤鱼炖豆腐 + 炒丝瓜", reason: "鲤鱼日，配豆腐双蛋白" },
-        { title: "🌙 晚餐", items: "小米粥小碗 + 蒸茄子 + 炒油麦菜", reason: "蒸茄子花青素抗氧化" }
-      ]
-    },
-    {
-      day: "周四",
-      meals: [
-        { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "燕麦是本周降脂主力" },
-        { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒西葫芦 + 木耳炒山药", reason: "鸡胸肉补蛋白，山药养胃算主食" },
-        { title: "🌙 晚餐", items: "绿豆汤小碗 + 平菇炒白菜 + 豆腐皮丝", reason: "平菇+豆腐皮都是低脂高蛋白" }
-      ]
-    },
-    {
-      day: "周五",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒萝卜丝", reason: "萝卜助消化，膳食纤维丰富" },
-        { title: "🌞 午餐", items: "小米饭小碗 + 草鱼炖萝卜 + 炒芹菜 + 海带丝汤", reason: "草鱼日，海带多糖辅助降脂" },
-        { title: "🌙 晚餐", items: "玉米糁粥小碗 + 番茄炒蛋清 + 炒莲藕片", reason: "莲藕少量吃算主食，但含维C" }
-      ]
-    },
-    {
-      day: "周六",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱炒熟后槲皮素依然有效" },
-        { title: "🌞 午餐", items: "绿豆面饼（不粘锅少油）+ 炖豆角 + 紫菜蛋花汤", reason: "绿豆面替代白面，升糖更低" },
-        { title: "🌙 晚餐", items: "燕麦粥小碗 + 鲤鱼炖冬瓜 + 炒油麦菜", reason: "鲤鱼日，配冬瓜利尿" }
-      ]
-    },
-    {
-      day: "周日",
-      meals: [
-        { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "简单清淡" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦肉丝炒芹菜（瘦肉50g）+ 香菇豆腐汤", reason: "本周唯一一次瘦肉，搭配芹菜降压" },
-        { title: "🌙 晚餐", items: "红薯小碗 + 蒸南瓜 + 炒茼蒿", reason: "南瓜和红薯不叠加太多，控总量" }
-      ]
-    }
+    { day: "周一", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "简单养胃的一天开始" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 清蒸草鱼 + 炒西兰花 + 紫菜汤", reason: "草鱼+西兰花是血管友好组合" },
+      { title: "🌙 晚餐", items: "绿豆粥小碗 + 豆腐炖白菜 + 炒洋葱", reason: "绿豆清热，豆腐补蛋白" }
+    ]},
+    { day: "周二", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "芹菜素降压，配小米养胃" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 鸡胸肉炒香菇 + 番茄蛋花汤", reason: "燕麦降胆固醇，鸡胸肉低脂" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 冬瓜炖虾皮 + 蒸山药", reason: "红豆利尿，虾皮少量补钙" }
+    ]},
+    { day: "周三", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒金针菇", reason: "金针菇膳食纤维减少胆固醇吸收" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 鲤鱼炖豆腐 + 炒丝瓜", reason: "鲤鱼日，配豆腐双蛋白" },
+      { title: "🌙 晚餐", items: "小米粥小碗 + 蒸茄子 + 炒油麦菜", reason: "蒸茄子花青素抗氧化" }
+    ]},
+    { day: "周四", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "燕麦是本周降脂主力" },
+      { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒西葫芦 + 木耳炒山药", reason: "鸡胸肉补蛋白，山药养胃算主食" },
+      { title: "🌙 晚餐", items: "绿豆汤小碗 + 平菇炒白菜 + 豆腐皮丝", reason: "平菇+豆腐皮都是低脂高蛋白" }
+    ]},
+    { day: "周五", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒萝卜丝", reason: "萝卜助消化，膳食纤维丰富" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 草鱼炖萝卜 + 炒芹菜 + 海带丝汤", reason: "草鱼日，海带多糖辅助降脂" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 番茄炒蛋清 + 炒莲藕片", reason: "莲藕少量吃算主食，含维C" }
+    ]},
+    { day: "周六", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱炒熟后槲皮素依然有效" },
+      { title: "🌞 午餐", items: "绿豆面饼（不粘锅少油）+ 炖豆角 + 紫菜蛋花汤", reason: "绿豆面替代白面，升糖更低" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 鲤鱼炖冬瓜 + 炒油麦菜", reason: "鲤鱼日，配冬瓜利尿" }
+    ]},
+    { day: "周日", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "简单清淡" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦肉丝炒芹菜（瘦肉50g）+ 香菇豆腐汤", reason: "本周唯一一次瘦肉，搭配芹菜降压" },
+      { title: "🌙 晚餐", items: "红薯小碗 + 蒸南瓜 + 炒茼蒿", reason: "南瓜和红薯不叠加太多，控总量" }
+    ]}
   ],
   "第三周": [
-    {
-      day: "周一",
-      meals: [
-        { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒西兰花", reason: "燕麦+西兰花：降脂+抗氧化双管齐下" },
-        { title: "🌞 午餐", items: "小米饭小碗 + 清蒸鲤鱼 + 番茄炒蛋清 + 炒木耳", reason: "鲤鱼日，番茄红素+木耳纤维" },
-        { title: "🌙 晚餐", items: "绿豆粥小碗 + 冬瓜豆腐汤 + 炒丝瓜", reason: "晚餐全素清淡" }
-      ]
-    },
-    {
-      day: "周二",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "红薯+香菇：纤维+免疫调节" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 鸡胸肉炒芹菜 + 海带豆腐汤", reason: "鸡胸肉低脂，芹菜降压，海带降脂" },
-        { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸茄子 + 炒油麦菜", reason: "蒸茄子保留花青素又不吸油" }
-      ]
-    },
-    {
-      day: "周三",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒萝卜丝", reason: "萝卜纤维帮助排出胆固醇" },
-        { title: "🌞 午餐", items: "燕麦饭小碗 + 草鱼炖豆腐 + 炒洋葱丝", reason: "草鱼日，燕麦+草鱼是降脂黄金组合" },
-        { title: "🌙 晚餐", items: "玉米糁粥小碗 + 平菇炒白菜 + 豆腐皮炒青椒", reason: "多种蛋白来源" }
-      ]
-    },
-    {
-      day: "周四",
-      meals: [
-        { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "茼蒿含钾量高辅助降压" },
-        { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒金针菇 + 紫菜蛋花汤", reason: "金针菇+鸡胸肉高蛋白低脂" },
-        { title: "🌙 晚餐", items: "绿豆汤小碗 + 炖豆角 + 蒸山药", reason: "山药养胃但算主食，配绿豆汤不加主食" }
-      ]
-    },
-    {
-      day: "周五",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "简单可靠的早餐组合" },
-        { title: "🌞 午餐", items: "小米饭小碗 + 鲤鱼炖萝卜 + 炒木耳 + 番茄汤", reason: "鲤鱼日，搭配降脂蔬菜" },
-        { title: "🌙 晚餐", items: "燕麦粥小碗 + 香菇炒丝瓜 + 豆腐", reason: "燕麦收尾，降脂效果持续" }
-      ]
-    },
-    {
-      day: "周六",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "芹菜素+小米养胃" },
-        { title: "🌞 午餐", items: "绿豆面薄饼1张 + 鸡胸肉炒西兰花 + 冬瓜汤", reason: "绿豆面替代白面，少油薄饼" },
-        { title: "🌙 晚餐", items: "玉米糁粥小碗 + 蒸茄子 + 炒莲藕片", reason: "莲藕少量配茄子" }
-      ]
-    },
-    {
-      day: "周日",
-      meals: [
-        { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱抗炎，炒熟吃" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦牛肉炖萝卜（50g牛肉）+ 海带丝", reason: "每周一次瘦牛肉，补铁锌" },
-        { title: "🌙 晚餐", items: "红豆粥小碗 + 豆腐炖白菜 + 炒蘑干", reason: "全植物蛋白晚餐" }
-      ]
-    }
+    { day: "周一", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒西兰花", reason: "燕麦+西兰花：降脂+抗氧化双管齐下" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 清蒸鲤鱼 + 番茄炒蛋清 + 炒木耳", reason: "鲤鱼日，番茄红素+木耳纤维" },
+      { title: "🌙 晚餐", items: "绿豆粥小碗 + 冬瓜豆腐汤 + 炒丝瓜", reason: "晚餐全素清淡" }
+    ]},
+    { day: "周二", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "红薯+香菇：纤维+免疫调节" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 鸡胸肉炒芹菜 + 海带豆腐汤", reason: "鸡胸肉低脂，芹菜降压，海带降脂" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸茄子 + 炒油麦菜", reason: "蒸茄子保留花青素又不吸油" }
+    ]},
+    { day: "周三", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒萝卜丝", reason: "萝卜纤维帮助排出胆固醇" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 草鱼炖豆腐 + 炒洋葱丝", reason: "草鱼日，燕麦+草鱼是降脂黄金组合" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 平菇炒白菜 + 豆腐皮炒青椒", reason: "多种蛋白来源" }
+    ]},
+    { day: "周四", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "茼蒿含钾量高辅助降压" },
+      { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒金针菇 + 紫菜蛋花汤", reason: "金针菇+鸡胸肉高蛋白低脂" },
+      { title: "🌙 晚餐", items: "绿豆汤小碗 + 炖豆角 + 蒸山药", reason: "山药养胃但算主食，配绿豆汤不加主食" }
+    ]},
+    { day: "周五", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "简单可靠的早餐组合" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 鲤鱼炖萝卜 + 炒木耳 + 番茄汤", reason: "鲤鱼日，搭配降脂蔬菜" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 香菇炒丝瓜 + 豆腐", reason: "燕麦收尾，降脂效果持续" }
+    ]},
+    { day: "周六", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "芹菜素+小米养胃" },
+      { title: "🌞 午餐", items: "绿豆面薄饼1张 + 鸡胸肉炒西兰花 + 冬瓜汤", reason: "绿豆面替代白面，少油薄饼" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 蒸茄子 + 炒莲藕片", reason: "莲藕少量配茄子" }
+    ]},
+    { day: "周日", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱抗炎，炒熟吃" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦牛肉炖萝卜（50g牛肉）+ 海带丝", reason: "每周一次瘦牛肉补铁锌" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 豆腐炖白菜 + 炒蘑干", reason: "全植物蛋白晚餐" }
+    ]}
   ],
   "第四周": [
-    {
-      day: "周一",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒木耳", reason: "木耳'血管清道夫'，炒熟吃" },
-        { title: "🌞 午餐", items: "燕麦饭小碗 + 草鱼炖冬瓜 + 炒西兰花", reason: "草鱼+燕麦降脂组合" },
-        { title: "🌙 晚餐", items: "绿豆粥小碗 + 番茄炒蛋清 + 炒油麦菜", reason: "番茄红素抗氧化" }
-      ]
-    },
-    {
-      day: "周二",
-      meals: [
-        { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "粗粮+绿叶菜" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 鸡胸肉炒香菇 + 紫菜蛋花汤", reason: "菌菇+鸡胸肉高蛋白组合" },
-        { title: "🌙 晚餐", items: "红薯小碗 + 炖豆角 + 蒸茄子", reason: "全蔬菜晚餐" }
-      ]
-    },
-    {
-      day: "周三",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "芹菜降压+红薯纤维" },
-        { title: "🌞 午餐", items: "小米饭小碗 + 鲤鱼炖豆腐 + 炒白菜 + 海带汤", reason: "鲤鱼日，海带辅助降脂" },
-        { title: "🌙 晚餐", items: "燕麦粥小碗 + 冬瓜炖豆腐 + 炒丝瓜", reason: "全植物晚餐" }
-      ]
-    },
-    {
-      day: "周四",
-      meals: [
-        { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "燕麦降脂，洋葱抗炎" },
-        { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒西葫芦 + 平菇汤", reason: "低脂高蛋白午餐" },
-        { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸山药 + 炒蘑干", reason: "山药养胃，蘑干补纤维" }
-      ]
-    },
-    {
-      day: "周五",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "简单清淡养胃" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 草鱼炖萝卜 + 炒芹菜 + 番茄汤", reason: "草鱼日，萝卜+芹菜降压" },
-        { title: "🌙 晚餐", items: "玉米糁粥小碗 + 豆腐炖白菜 + 炒金针菇", reason: "金针菇纤维帮助排出胆固醇" }
-      ]
-    },
-    {
-      day: "周六",
-      meals: [
-        { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "菌菇多糖调节免疫" },
-        { title: "🌞 午餐", items: "小碗面条（50g）+ 番茄蛋清浇头 + 炒油麦菜", reason: "偶尔吃面，浇头清淡" },
-        { title: "🌙 晚餐", items: "绿豆汤小碗 + 鲤鱼炖豆腐 + 炒丝瓜", reason: "鲤鱼日，晚餐吃鱼也可以" }
-      ]
-    },
-    {
-      day: "周日",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒萝卜丝", reason: "红薯+萝卜都是纤维大户" },
-        { title: "🌞 午餐", items: "燕麦饭小碗 + 瘦肉丝炒木耳（瘦肉50g）+ 紫菜汤", reason: "本周唯一瘦肉配木耳" },
-        { title: "🌙 晚餐", items: "小米粥小碗 + 蒸南瓜 + 炒长豆角", reason: "南瓜控量，豆角炒透" }
-      ]
-    }
+    { day: "周一", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒木耳", reason: "木耳'血管清道夫'，炒熟吃" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 草鱼炖冬瓜 + 炒西兰花", reason: "草鱼+燕麦降脂组合" },
+      { title: "🌙 晚餐", items: "绿豆粥小碗 + 番茄炒蛋清 + 炒油麦菜", reason: "番茄红素抗氧化" }
+    ]},
+    { day: "周二", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "粗粮+绿叶菜" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 鸡胸肉炒香菇 + 紫菜蛋花汤", reason: "菌菇+鸡胸肉高蛋白组合" },
+      { title: "🌙 晚餐", items: "红薯小碗 + 炖豆角 + 蒸茄子", reason: "全蔬菜晚餐" }
+    ]},
+    { day: "周三", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "芹菜降压+红薯纤维" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 鲤鱼炖豆腐 + 炒白菜 + 海带汤", reason: "鲤鱼日，海带辅助降脂" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 冬瓜炖豆腐 + 炒丝瓜", reason: "全植物晚餐" }
+    ]},
+    { day: "周四", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "燕麦降脂，洋葱抗炎" },
+      { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒西葫芦 + 平菇汤", reason: "低脂高蛋白午餐" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸山药 + 炒蘑干", reason: "山药养胃，蘑干补纤维" }
+    ]},
+    { day: "周五", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "简单清淡养胃" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 草鱼炖萝卜 + 炒芹菜 + 番茄汤", reason: "草鱼日，萝卜+芹菜降压" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 豆腐炖白菜 + 炒金针菇", reason: "金针菇纤维帮助排出胆固醇" }
+    ]},
+    { day: "周六", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "菌菇多糖调节免疫" },
+      { title: "🌞 午餐", items: "小碗面条（50g）+ 番茄蛋清浇头 + 炒油麦菜", reason: "偶尔吃面，浇头清淡" },
+      { title: "🌙 晚餐", items: "绿豆汤小碗 + 鲤鱼炖冬瓜 + 炒丝瓜", reason: "鲤鱼日，晚餐吃鱼也可以" }
+    ]},
+    { day: "周日", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒萝卜丝", reason: "红薯+萝卜都是纤维大户" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 瘦肉丝炒木耳（瘦肉50g）+ 紫菜汤", reason: "本周唯一瘦肉配木耳" },
+      { title: "🌙 晚餐", items: "小米粥小碗 + 蒸南瓜 + 炒长豆角", reason: "南瓜控量，豆角炒透" }
+    ]}
   ],
   "第五周": [
-    {
-      day: "周一",
-      meals: [
-        { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒西兰花", reason: "最强降脂早餐组合" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 草鱼炖豆腐 + 炒芹菜 + 海带汤", reason: "草鱼+豆腐+海带三重降脂" },
-        { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸茄子 + 炒白菜", reason: "蒸茄子保留营养不吸油" }
-      ]
-    },
-    {
-      day: "周二",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "茼蒿钾含量高辅助降压" },
-        { title: "🌞 午餐", items: "小米饭小碗 + 鸡胸肉炒木耳 + 番茄豆腐汤", reason: "鸡胸肉+木耳高蛋白高纤维" },
-        { title: "🌙 晚餐", items: "绿豆汤小碗 + 炒丝瓜 + 炒平菇", reason: "全蔬菜晚餐清肠道" }
-      ]
-    },
-    {
-      day: "周三",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱槲皮素降低血液黏稠度" },
-        { title: "🌞 午餐", items: "燕麦饭小碗 + 鲤鱼炖冬瓜 + 炒油麦菜", reason: "鲤鱼日，冬瓜利尿降压" },
-        { title: "🌙 晚餐", items: "玉米糁粥小碗 + 香菇炒白菜 + 豆腐皮丝", reason: "多种植物蛋白" }
-      ]
-    },
-    {
-      day: "周四",
-      meals: [
-        { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒金针菇", reason: "金针菇纤维丰富" },
-        { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒西葫芦 + 紫菜蛋花汤", reason: "简单营养均衡" },
-        { title: "🌙 晚餐", items: "绿豆粥小碗 + 蒸山药 + 炒萝卜丝", reason: "山药+萝卜养胃组合" }
-      ]
-    },
-    {
-      day: "周五",
-      meals: [
-        { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "燕麦+芹菜降脂降压" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 草鱼炖萝卜 + 炒木耳 + 冬瓜汤", reason: "草鱼日，全方位降脂组合" },
-        { title: "🌙 晚餐", items: "小米粥小碗 + 番茄炒蛋清 + 炒长豆角", reason: "番茄红素保护血管" }
-      ]
-    },
-    {
-      day: "周六",
-      meals: [
-        { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "红薯纤维+菌菇多糖" },
-        { title: "🌞 午餐", items: "绿豆面薄饼1张 + 鲤鱼炖豆腐 + 炒茼蒿", reason: "鲤鱼日，绿豆面替代白面" },
-        { title: "🌙 晚餐", items: "红豆粥小碗 + 炖豆角 + 蒸茄子", reason: "全素清淡晚餐" }
-      ]
-    },
-    {
-      day: "周日",
-      meals: [
-        { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "收尾清淡" },
-        { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦牛肉炒西兰花（50g牛肉）+ 海带豆腐汤", reason: "每周一次瘦牛肉补铁，海带降脂" },
-        { title: "🌙 晚餐", items: "燕麦粥小碗 + 冬瓜炖虾皮 + 炒油麦菜", reason: "燕麦收尾，为下一轮循环做准备" }
-      ]
-    }
+    { day: "周一", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒西兰花", reason: "最强降脂早餐组合" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 草鱼炖豆腐 + 炒芹菜 + 海带汤", reason: "草鱼+豆腐+海带三重降脂" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸茄子 + 炒白菜", reason: "蒸茄子保留营养不吸油" }
+    ]},
+    { day: "周二", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "茼蒿钾含量高辅助降压" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 鸡胸肉炒木耳 + 番茄豆腐汤", reason: "鸡胸肉+木耳高蛋白高纤维" },
+      { title: "🌙 晚餐", items: "绿豆汤小碗 + 炒丝瓜 + 炒平菇", reason: "全蔬菜晚餐清肠道" }
+    ]},
+    { day: "周三", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱槲皮素降低血液黏稠度" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 鲤鱼炖冬瓜 + 炒油麦菜", reason: "鲤鱼日，冬瓜利尿降压" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 香菇炒白菜 + 豆腐皮丝", reason: "多种植物蛋白" }
+    ]},
+    { day: "周四", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒金针菇", reason: "金针菇纤维丰富" },
+      { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒西葫芦 + 紫菜蛋花汤", reason: "简单营养均衡" },
+      { title: "🌙 晚餐", items: "绿豆粥小碗 + 蒸山药 + 炒萝卜丝", reason: "山药+萝卜养胃组合" }
+    ]},
+    { day: "周五", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "燕麦+芹菜降脂降压" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 草鱼炖萝卜 + 炒木耳 + 冬瓜汤", reason: "草鱼日，全方位降脂" },
+      { title: "🌙 晚餐", items: "小米粥小碗 + 番茄炒蛋清 + 炒长豆角", reason: "番茄红素保护血管" }
+    ]},
+    { day: "周六", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "红薯纤维+菌菇多糖" },
+      { title: "🌞 午餐", items: "绿豆面薄饼1张 + 鲤鱼炖豆腐 + 炒茼蒿", reason: "鲤鱼日，绿豆面替代白面" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 炖豆角 + 蒸茄子", reason: "全素清淡晚餐" }
+    ]},
+    { day: "周日", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "收尾清淡" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦牛肉炒西兰花（50g牛肉）+ 海带豆腐汤", reason: "每周一次瘦牛肉补铁" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 冬瓜炖虾皮 + 炒油麦菜", reason: "燕麦收尾" }
+    ]}
+  ],
+  "第六周": [
+    { day: "周一", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒西兰花", reason: "西兰花萝卜硫素保护血管内皮" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 草鱼炖山药 + 炒白菜 + 紫菜汤", reason: "草鱼+山药是养胃降脂组合，山药算在主食里" },
+      { title: "🌙 晚餐", items: "绿豆粥小碗 + 蒸茄子 + 豆腐皮炒芹菜", reason: "蒸茄子不吸油，芹菜辅助降压" }
+    ]},
+    { day: "周二", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒平菇", reason: "平菇多糖调节免疫" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 鸡胸肉炒洋葱 + 番茄豆腐汤", reason: "洋葱抗炎+鸡胸肉低脂，番茄红素保护血管" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 冬瓜炖豆腐 + 炒茼蒿", reason: "红豆利尿，冬瓜也利尿，双重辅助降压" }
+    ]},
+    { day: "周三", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒木耳", reason: "木耳帮助抑制血小板聚集" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 鲤鱼炖萝卜 + 炒丝瓜 + 海带丝汤", reason: "鲤鱼日，萝卜助消化，海带降脂" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 香菇炒油麦菜 + 豆腐", reason: "香菇多糖+豆腐蛋白" }
+    ]},
+    { day: "周四", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒萝卜丝", reason: "燕麦降脂主力" },
+      { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒芹菜 + 紫菜蛋花汤", reason: "芹菜降压，鸡胸肉补蛋白" },
+      { title: "🌙 晚餐", items: "绿豆汤小碗 + 蒸南瓜 + 炒长豆角", reason: "南瓜控量，豆角必须炒透" }
+    ]},
+    { day: "周五", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "茼蒿含钾降压" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 草鱼炖豆腐 + 炒西葫芦 + 番茄汤", reason: "草鱼日，清蒸或炖都好" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 平菇炒白菜 + 蒸山药", reason: "山药养胃，算在主食里" }
+    ]},
+    { day: "周六", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "粗粮+菌菇" },
+      { title: "🌞 午餐", items: "小碗捞面（50g干面，过凉水）+ 番茄蛋清浇头 + 炒金针菇", reason: "捞面淀粉回生升糖略低，配清淡浇头" },
+      { title: "🌙 晚餐", items: "小米粥小碗 + 鲤鱼炖冬瓜 + 炒芹菜", reason: "鲤鱼日晚餐" }
+    ]},
+    { day: "周日", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱+燕麦降脂降黏稠度" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦肉丝炒木耳（瘦肉50g）+ 冬瓜豆腐汤", reason: "本周唯一瘦肉，木耳协同排胆固醇" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸茄子 + 炒油麦菜", reason: "红豆利尿收尾" }
+    ]}
+  ],
+  "第七周": [
+    { day: "周一", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "温和养胃的一天开始" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 清蒸草鱼 + 炒木耳 + 番茄汤", reason: "草鱼+燕麦+木耳三管齐下降脂" },
+      { title: "🌙 晚餐", items: "绿豆粥小碗 + 豆腐炖白菜 + 炒茼蒿", reason: "全素晚餐" }
+    ]},
+    { day: "周二", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒金针菇", reason: "金针菇纤维减少胆固醇吸收" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 鸡胸肉炒西兰花 + 海带丝汤", reason: "西兰花萝卜硫素+海带多糖" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸山药 + 炒丝瓜", reason: "红豆利尿，山药养胃" }
+    ]},
+    { day: "周三", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "芹菜降压+粗粮" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 鲤鱼炖冬瓜 + 炒洋葱丝 + 紫菜汤", reason: "鲤鱼日，冬瓜利尿，洋葱抗炎" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 蒸茄子 + 豆腐皮炒青椒", reason: "蒸茄子+豆腐皮双植物蛋白" }
+    ]},
+    { day: "周四", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒平菇", reason: "燕麦+平菇都含降脂多糖" },
+      { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒萝卜丝 + 香菇豆腐汤", reason: "萝卜助消化，香菇调节免疫" },
+      { title: "🌙 晚餐", items: "绿豆汤小碗 + 炖豆角 + 炒油麦菜", reason: "绿豆清热，豆角补植物蛋白" }
+    ]},
+    { day: "周五", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "红薯+香菇纤维充足" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 草鱼炖萝卜 + 炒西兰花 + 海带汤", reason: "草鱼日，配降脂蔬菜" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 番茄炒蛋清 + 冬瓜豆腐汤", reason: "番茄红素+豆腐蛋白" }
+    ]},
+    { day: "周六", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "茼蒿促进食欲，含钾降压" },
+      { title: "🌞 午餐", items: "蒸面条小碗（50g干面+大量豆角蔬菜，少油）+ 紫菜蛋花汤", reason: "偶尔换口味，面少菜多油少是关键" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 鲤鱼炖豆腐 + 炒白菜", reason: "鲤鱼日晚餐" }
+    ]},
+    { day: "周日", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒洋葱丝", reason: "洋葱降低血液黏稠度" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦牛肉炖萝卜（50g牛肉）+ 炒芹菜 + 番茄汤", reason: "每周一次瘦牛肉补铁锌，芹菜降压" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 蒸南瓜 + 炒蘑干", reason: "南瓜小量，蘑干补纤维" }
+    ]}
+  ],
+  "第八周": [
+    { day: "周一", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒木耳", reason: "燕麦+木耳双降脂" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 清蒸鲤鱼 + 炒芹菜 + 番茄豆腐汤", reason: "鲤鱼日，芹菜降压，番茄抗氧化" },
+      { title: "🌙 晚餐", items: "绿豆粥小碗 + 蒸茄子 + 炒丝瓜", reason: "全素清淡晚餐" }
+    ]},
+    { day: "周二", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒茼蒿", reason: "红薯纤维+茼蒿钾" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 鸡胸肉炒西兰花 + 海带豆腐汤", reason: "鸡胸肉低脂，海带降脂" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 平菇炒白菜 + 炒洋葱丝", reason: "洋葱炒熟抗炎" }
+    ]},
+    { day: "周三", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒香菇", reason: "香菇多糖降胆固醇" },
+      { title: "🌞 午餐", items: "燕麦饭小碗 + 草鱼炖豆腐 + 炒萝卜丝 + 紫菜汤", reason: "草鱼日，燕麦+草鱼降脂黄金组合" },
+      { title: "🌙 晚餐", items: "玉米糁粥小碗 + 冬瓜炖虾皮 + 炒长豆角", reason: "冬瓜利尿，豆角补蛋白" }
+    ]},
+    { day: "周四", meals: [
+      { title: "🌅 早餐", items: "玉米糁粥（大半碗）+ 水煮蛋清1个 + 炒西兰花", reason: "萝卜硫素保护血管" },
+      { title: "🌞 午餐", items: "红薯饭小碗 + 鸡胸肉炒金针菇 + 香菇豆腐汤", reason: "双菌菇+鸡胸肉高蛋白" },
+      { title: "🌙 晚餐", items: "绿豆汤小碗 + 蒸山药 + 炒油麦菜", reason: "山药养胃，算主食" }
+    ]},
+    { day: "周五", meals: [
+      { title: "🌅 早餐", items: "燕麦粥（大半碗）+ 水煮蛋清1个 + 炒白菜", reason: "燕麦坚持吃，降脂效果持续" },
+      { title: "🌞 午餐", items: "小米饭小碗 + 鲤鱼炖冬瓜 + 炒木耳 + 番茄汤", reason: "鲤鱼日，木耳排胆固醇" },
+      { title: "🌙 晚餐", items: "小米粥小碗 + 豆腐皮炒芹菜 + 蒸茄子", reason: "芹菜降压+蒸茄子抗氧化" }
+    ]},
+    { day: "周六", meals: [
+      { title: "🌅 早餐", items: "蒸红薯（大半碗）+ 水煮蛋清1个 + 炒萝卜丝", reason: "红薯+萝卜纤维充足" },
+      { title: "🌞 午餐", items: "绿豆面薄饼1张 + 鸡胸肉炒西葫芦 + 冬瓜豆腐汤", reason: "绿豆面替代白面，鸡胸肉低脂" },
+      { title: "🌙 晚餐", items: "燕麦粥小碗 + 炖豆角 + 炒平菇", reason: "豆角+平菇补蛋白" }
+    ]},
+    { day: "周日", meals: [
+      { title: "🌅 早餐", items: "小米粥（大半碗）+ 水煮蛋清1个 + 炒芹菜", reason: "芹菜降压，小米养胃" },
+      { title: "🌞 午餐", items: "杂粮馒头1个 + 瘦牛肉炒洋葱（50g牛肉）+ 海带丝汤", reason: "每周一次瘦牛肉补铁锌，洋葱抗炎，海带降脂" },
+      { title: "🌙 晚餐", items: "红豆粥小碗 + 番茄炒蛋清 + 炒茼蒿", reason: "第八周收尾，进入下一轮循环" }
+    ]}
   ]
 };
 
 // ========================
 // TAB SWITCHING
 // ========================
-function switchTab(tab) {
+function switchTab(tab, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('sec-' + tab).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
 
 // ========================
@@ -1674,152 +1900,75 @@ function searchFood(name) {
   suggestionsEl.classList.remove('show');
   const food = FOOD_DB[name];
   if (!food) return;
-
   const resultArea = document.getElementById('resultArea');
   const resultCard = document.getElementById('resultCard');
-
   const ratingClass = food.rating;
-  const barColor = {
-    recommend: 'var(--green)',
-    caution: 'var(--yellow)',
-    limit: 'var(--orange)',
-    avoid: 'var(--red)'
-  }[ratingClass];
-
-  const scoreLabels = {
-    cardio: '心血管友好度',
-    bp: '血压影响',
-    stomach: '胃部安全度',
-    sugar: '血糖控制',
-    vessel: '血管保护'
-  };
-
-  function getBarColor(score) {
-    if (score >= 70) return 'var(--green)';
-    if (score >= 50) return 'var(--yellow)';
-    if (score >= 30) return 'var(--orange)';
-    return 'var(--red)';
+  const barColor = { recommend:'var(--green)', caution:'var(--yellow)', limit:'var(--orange)', avoid:'var(--red)' }[ratingClass];
+  const scoreLabels = { cardio:'心血管友好度', bp:'血压影响', stomach:'胃部安全度', sugar:'血糖控制', vessel:'血管保护' };
+  function getBarColor(s) { return s>=70?'var(--green)':s>=50?'var(--yellow)':s>=30?'var(--orange)':'var(--red)'; }
+  let h = `<h2>📊 ${name} — 健康分析</h2><div class="rating-badge ${ratingClass}">${food.ratingText}</div>
+  <div class="info-grid">
+    <div class="info-box"><div class="label">建议频率</div><div class="value" style="font-size:17px;color:${barColor}">${food.freq}</div></div>
+    <div class="info-box"><div class="label">每次用量</div><div class="value" style="font-size:17px">${food.portion}</div></div>
+    <div class="info-box"><div class="label">升糖指数(GI)</div><div class="value" style="color:${food.gi>70?'var(--red)':food.gi>55?'var(--orange)':'var(--green)'}">${food.gi}</div></div>
+    <div class="info-box"><div class="label">升糖等级</div><div class="value" style="font-size:17px">${food.giLevel}</div></div>
+  </div><h3>五维健康评分</h3><div class="score-bars">`;
+  for (const [k,l] of Object.entries(scoreLabels)) {
+    const s = food.scores[k];
+    h += `<div class="score-row"><div class="score-label"><span>${l}</span><span style="font-weight:700;color:${getBarColor(s)}">${s}/100</span></div><div class="score-bar-bg"><div class="score-bar-fill" style="width:${s}%;background:${getBarColor(s)}"></div></div></div>`;
   }
-
-  let html = `
-    <h2>📊 ${name} — 健康分析</h2>
-    <div class="rating-badge ${ratingClass}">${food.ratingText}</div>
-    <div class="info-grid">
-      <div class="info-box">
-        <div class="label">建议频率</div>
-        <div class="value" style="font-size:16px;color:${barColor}">${food.freq}</div>
-      </div>
-      <div class="info-box">
-        <div class="label">每次用量</div>
-        <div class="value" style="font-size:16px;">${food.portion}</div>
-      </div>
-      <div class="info-box">
-        <div class="label">升糖指数(GI)</div>
-        <div class="value" style="color:${food.gi > 70 ? 'var(--red)' : food.gi > 55 ? 'var(--orange)' : 'var(--green)'}">${food.gi}</div>
-      </div>
-      <div class="info-box">
-        <div class="label">升糖等级</div>
-        <div class="value" style="font-size:16px;">${food.giLevel}</div>
-      </div>
-    </div>
-    <h3>五维健康评分</h3>
-    <div class="score-bars">
-  `;
-
-  for (const [key, label] of Object.entries(scoreLabels)) {
-    const score = food.scores[key];
-    html += `
-      <div class="score-row">
-        <div class="score-label">
-          <span>${label}</span>
-          <span style="font-weight:700;color:${getBarColor(score)}">${score}/100</span>
-        </div>
-        <div class="score-bar-bg">
-          <div class="score-bar-fill" style="width:${score}%;background:${getBarColor(score)}"></div>
-        </div>
-      </div>
-    `;
-  }
-
-  html += `</div><h3>详细影响分析</h3><ul class="detail-list">`;
-  for (const impact of food.impacts) {
-    html += `<li><span>${impact.icon}</span><span>${impact.text}</span></li>`;
-  }
-  html += `</ul>`;
-
-  html += `
-    <h3>👨‍🍳 怎么吃</h3>
-    <div style="background:#f9f9f9;padding:14px;border-radius:10px;font-size:16px;line-height:1.8;">
-      ${food.howTo}
-    </div>
-  `;
-
-  resultCard.innerHTML = html;
+  h += `</div><h3>详细影响分析</h3><ul class="detail-list">`;
+  for (const i of food.impacts) h += `<li><span>${i.icon}</span><span>${i.text}</span></li>`;
+  h += `</ul><h3>👨‍🍳 怎么吃</h3><div style="background:#f8f9fa;padding:16px;border-radius:12px;font-size:18px;line-height:1.8;border:1px solid #eee">${food.howTo}</div>`;
+  resultCard.innerHTML = h;
   resultArea.classList.add('show');
-  resultArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  resultArea.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
-// Common foods list
 function renderCommonFoods() {
-  const container = document.getElementById('commonFoods');
-  const groups = {
-    safe: { label: '✅ 推荐', items: [] },
-    caution: { label: '⚠️ 注意', items: [] },
-    danger: { label: '❌ 不推荐', items: [] }
-  };
-  for (const [name, data] of Object.entries(FOOD_DB)) {
-    if (data.rating === 'recommend') groups.safe.items.push(name);
-    else if (data.rating === 'caution') groups.caution.items.push(name);
-    else groups.danger.items.push(name);
+  const c = document.getElementById('commonFoods');
+  const g = { safe:{label:'✅ 推荐',items:[]}, caution:{label:'⚠️ 注意',items:[]}, danger:{label:'❌ 不推荐/禁止',items:[]} };
+  for (const [n,d] of Object.entries(FOOD_DB)) {
+    if (d.rating==='recommend') g.safe.items.push(n);
+    else if (d.rating==='caution') g.caution.items.push(n);
+    else g.danger.items.push(n);
   }
-  let html = '';
-  for (const [cls, group] of Object.entries(groups)) {
-    html += `<div style="font-size:17px;font-weight:700;margin:14px 0 8px;color:var(--text)">${group.label}</div>`;
-    html += '<div style="display:flex;flex-wrap:wrap;gap:8px;">';
-    for (const item of group.items) {
-      html += `<div class="food-common-item ${cls}" onclick="searchFood('${item}')" style="display:inline-block;padding:8px 14px;cursor:pointer;">${item}</div>`;
-    }
-    html += '</div>';
+  let h = '';
+  for (const [cls,gr] of Object.entries(g)) {
+    h += `<div style="font-size:19px;font-weight:700;margin:16px 0 10px">${gr.label}</div><div style="display:flex;flex-wrap:wrap;gap:6px;">`;
+    for (const i of gr.items) h += `<div class="food-common-item ${cls}" onclick="searchFood('${i}')">${i}</div>`;
+    h += '</div>';
   }
-  container.innerHTML = html;
+  c.innerHTML = h;
 }
 
 // ========================
 // MENU
 // ========================
 function renderWeekSelector() {
-  const container = document.getElementById('weekSelector');
-  const weeks = Object.keys(MENUS);
-  container.innerHTML = weeks.map((w, i) =>
-    `<button class="week-btn ${i === 0 ? 'active' : ''}" onclick="selectWeek('${w}', this)">${w}</button>`
-  ).join('');
-  renderMenu(weeks[0]);
+  const c = document.getElementById('weekSelector');
+  const ws = Object.keys(MENUS);
+  c.innerHTML = ws.map((w,i) => `<button class="week-btn ${i===0?'active':''}" onclick="selectWeek('${w}',this)">${w}</button>`).join('');
+  renderMenu(ws[0]);
 }
 
-function selectWeek(week, btn) {
+function selectWeek(w, btn) {
   document.querySelectorAll('.week-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  renderMenu(week);
+  renderMenu(w);
 }
 
-function renderMenu(week) {
-  const container = document.getElementById('menuContent');
-  const days = MENUS[week];
+function renderMenu(w) {
+  const c = document.getElementById('menuContent');
+  const ds = MENUS[w];
   const colors = ['#e8f5e9','#e3f2fd','#fff3e0','#f3e5f5','#e0f2f1','#fce4ec','#fffde7'];
-  container.innerHTML = days.map((d, i) => `
+  c.innerHTML = ds.map((d,i) => `
     <div class="day-card">
       <div class="day-header" onclick="toggleDay(this)" style="background:${colors[i]}">
-        <span>${d.day}</span>
-        <span class="arrow">▼</span>
+        <span>${d.day}</span><span class="arrow">▼</span>
       </div>
       <div class="day-content">
-        ${d.meals.map(m => `
-          <div class="meal-block">
-            <div class="meal-title">${m.title}</div>
-            <div class="meal-items">${m.items}</div>
-            <div class="meal-reason">💡 ${m.reason}</div>
-          </div>
-        `).join('')}
+        ${d.meals.map(m => `<div class="meal-block"><div class="meal-title">${m.title}</div><div class="meal-items">${m.items}</div><div class="meal-reason">💡 ${m.reason}</div></div>`).join('')}
       </div>
     </div>
   `).join('');
@@ -1828,23 +1977,19 @@ function renderMenu(week) {
 function toggleDay(header) {
   const content = header.nextElementSibling;
   const isExpanded = content.classList.contains('show');
-  // Close all others
   document.querySelectorAll('.day-content').forEach(c => c.classList.remove('show'));
   document.querySelectorAll('.day-header').forEach(h => h.classList.remove('expanded'));
-  if (!isExpanded) {
-    content.classList.add('show');
-    header.classList.add('expanded');
-  }
+  if (!isExpanded) { content.classList.add('show'); header.classList.add('expanded'); }
 }
 
 // ========================
 // RULES
 // ========================
 function renderRules() {
-  const container = document.getElementById('rulesContent');
-  container.innerHTML = RULES.map((r, i) => `
+  const c = document.getElementById('rulesContent');
+  c.innerHTML = RULES.map((r,i) => `
     <div class="rule-item">
-      <div class="rule-num">${i + 1}</div>
+      <div class="rule-num ${r.isRed?'red':''}">${i+1}</div>
       <div>
         <div class="rule-text">${r.text.replace(r.highlight, `<strong>${r.highlight}</strong>`)}</div>
         <div class="rule-reason">💡 ${r.reason}</div>
@@ -1859,6 +2004,10 @@ function renderRules() {
 renderCommonFoods();
 renderWeekSelector();
 renderRules();
+
+// Default to menu tab
+document.querySelector('.tab-btn').classList.add('active');
+document.getElementById('sec-menu').classList.add('active');
 </script>
 </body>
 </html>
