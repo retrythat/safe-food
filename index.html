@@ -1494,7 +1494,7 @@ const FOOD_DB = {
       { icon: "❌", text: "酒精直接损伤血管内皮，加速动脉硬化" },
       { icon: "❌", text: "包括白酒、啤酒、红酒、药酒，全部禁止" }
     ],
-    howTo: "一口都不能喝。没有"少喝一点没事"这种说法。"
+    howTo: "一口都不能喝。没有'少喝一点没事'这种说法。"
   },
   "啤酒": {
     rating: "avoid", ratingText: "❌ 绝对禁止",
@@ -2006,8 +2006,8 @@ renderWeekSelector();
 renderRules();
 
 // Default to menu tab
-document.querySelector('.tab-btn').classList.add('active');
 document.getElementById('sec-menu').classList.add('active');
+document.querySelectorAll('.tab-btn')[0].classList.add('active');
 </script>
 </body>
 </html>
